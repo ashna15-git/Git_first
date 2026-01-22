@@ -1,0 +1,30 @@
+---
+title: "A1_assignment"
+df-print: paged
+---
+
+## Introduction
+This is my A1, I will create data viz and push to web and it will be part of my website posts folder
+
+## Setup
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+library(tidyverse)
+library(ggformula)
+library(babynames)
+```
+
+## First Graph
+
+```{r}
+penguins
+```
+
+```{r}
+penguins %>% gf_bar(~ species)
+```
+
+

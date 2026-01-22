@@ -1,0 +1,15 @@
+{
+  "hash": "424b2b118726d0e786f9cd92b3afa398",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"A1_assignment\"\nformat: html\n---\n\n## Introduction\nThis is my A1, I will create data viz and push to web and it will be part of my website posts folder\n\n## Setup\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(ggformula)\nlibrary()\n```\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
