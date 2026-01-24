@@ -83,7 +83,7 @@ KishoreKumar_modified1 %>%
 
 Comments MOst of the songs were released in 1973. The release of songs increased gradually from the 1950s, peaked in the 70s and started decreasing after 1973.
 
-## Visualising the data
+## Visualising the number of songs in which Kishore Kumar collaborated with each music director
 
 ```{r}
 KishoreKumar_modified1 %>%
@@ -94,7 +94,7 @@ KishoreKumar_modified1 %>%
 
 Comments The chart shows that Kishore Kumar collaborated the most with R.D. Burman and also collaborated a lot with Laxmikant Pyarelal, Kalyanji Anandji, S. D. Burman and Shankar Jaikishen.
 
-## Visualising the data
+## Visualising the number of songs in which Kishore Kumar collaborated with each lyricist
 
 ```{r}
 KishoreKumar_modified1 %>%
