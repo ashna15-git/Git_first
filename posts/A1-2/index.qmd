@@ -1,0 +1,130 @@
+---
+title: "Assignment 1-2"
+---
+
+## Introduction
+
+I am examining a large fertility related dataset
+
+## Setup
+
+------------------------------------------------------------------------
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(ggformula)
+library(janitor)
+```
+
+## Loading the data
+
+```{r}
+Fertility_1 <- read_csv("../Data/Fertility.csv")
+Fertility_1
+```
+
+## Inspecting the data
+
+```{r}
+glimpse(Fertility_1)
+```
+
+## Data Munging
+
+```{r}
+Fertility_modified <- Fertility_1 %>% 
+  
+  mutate(
+    morekids = as.factor(morekids),
+    gender1 = as.factor(gender1),
+    gender2 = as_factor(gender2),
+    afam = as.factor(afam),
+    hispanic = as.factor(hispanic),
+    other = as.factor(other)
+  ) %>% 
+  
+  dplyr::relocate(where(is.factor), .after = rownames)
+```
+
+Comments-
+The dataset in Fertility_1 is assigned to Fertility_modified so that the original dataset is not affected while modifying the data in the program. 
+The variables morekids, gender1, gender2, afam, hispanic and other are converted from character variables to factor variables.
+The factor variables are all shifted to start of the table after rownames, after which the rest of the variables (age and work) follow.
+
+## Data Dictionary
+
+Quantitative Data-
+
+age (dbl): Ages of married women with 2 or more children,
+
+work (dbl): Number of weeks the married women worked in 1979
+
+Qualitative Data-
+
+morekids (fct): Does the married woman have more than 2 children?,
+
+gender1 (fct): Gender of the first child,
+
+gender2 (fct): Gender of the second child,
+
+afam (fct): Is the married woman African-American?,
+
+hispanic (fct): Is the married woman Hispanic?,
+
+other (fct): Is the married woman something other than African-American and Hispanic
+
+## Summarising the data
+
+```{r}
+skimr::skim(Fertility_modified)
+```
+
+Comments-
+The mean age of the married women is approxiamately 30.4 and the standard deviation is approxiamately 3.4 which means most women are around this age. 
+The mean number of weeks the married women have worked for in 1979 is approxiamately 19 weeks and the standard deviation is approxiamately 22 which means there are very dirrent working hours of each women with some not working at all and some working much more than 19 weeks.  
+
+## Visualising number of married women
+
+```{r}
+Fertility_modified %>% 
+  gf_bar( ~ morekids, color = "orange", fill = "pink") %>% 
+  gf_labs(x = "Have more children", y = "Married Women", title = "Plot 1A: Married women aged 21-35 who have more children")
+```
+
+Comments-
+Most of the married women in the dataset have 2 children and only less than half of them have more than 2. 
+
+## Visualising ages of the women
+
+```{r}
+Fertility_modified %>% 
+  gf_boxplot(morekids ~ age, orientation = "y", color = "red", fill = "pink", alpha = 0.8) %>% 
+  gf_labs(x = "Have more children", y = "Age of married women", title = "Plot 1B: Ages of married women who have more than 2 children")
+```
+
+Comments-
+The median age of women who have 2 children and the ones who have more is the same which is 31 years. The age range of both seem to be similar (2 children- 29-33 and 2+ children- 28-33) There some outliers in cases of married women who have more than 2 children at ages of 21 and 22.
+
+## Visualising race of the women
+
+```{r}
+Fertility_modified %>% 
+  gf_bar( ~ afam, color = "navy", fill = "lightblue") %>% 
+  gf_labs(x = "Have more children", y = "African American Married Women", title = "Plot 1C: African American Married Women who have more than 2 children")
+```
+
+
+Comments-
+Most African-American married women have only 2 children. 
+
+## Visualising no of working weeks of the women in 1979
+
+```{r}
+Fertility_modified %>% 
+  gf_bar( ~ work, color = ~ morekids, fill = ~ morekids) %>% 
+  gf_labs(x = "No of weeks worked", y = "Married Women", title = "Plot 1D: Weeks Worked by Married Women with 2 or more Children in 1979")
+```
+
+Comments- 
+A good number of women worked all year round but most of the married women did not work all year round suggesting women with 2 or more children prefer not to work.

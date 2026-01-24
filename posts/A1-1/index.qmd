@@ -1,0 +1,49 @@
+---
+title: "Assignment A1-1"
+---
+
+## Introduction
+
+I am going to examine the data pertaining to airbnb
+
+## Setting up R packages
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(ggformula)
+library(janitor)
+```
+
+## Loading the data
+
+```{r}
+Airbnb <- read_csv("../Data/airbnb.csv")
+Airbnb
+```
+
+
+## Inspecting the data
+
+```{r}
+glimpse(Airbnb)
+```
+
+Comments-
+There are 9995 rows and 1 column, which is the variable- price, in this dataset 
+
+## Data Dictionary
+
+Quantitative Data-
+
+price (dbl): Prices of various Airbnbs on the French Riviera
+
+## Displaying prices of Airbnbs a graph
+
+```{r}
+Airbnb %>% 
+  gf_histogram(~price, color = "red", fill = "pink", alpha = 0.8)
+```
+
+Comments-
+There are a lot more Airbnbs which are listed at lower prices than one listed at higher prices.

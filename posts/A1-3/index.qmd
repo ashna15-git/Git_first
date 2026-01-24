@@ -1,0 +1,110 @@
+---
+title: "Assignment 1-3"
+---
+
+## Introduction
+I am examining a dataset of songs by Kishore Kumar
+
+## Setup
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(ggformula)
+library(janitor)
+```
+
+## Loading the data
+
+```{r}
+KishoreKumar1 <- read_csv("../Data/KishoreKumar.csv")
+KishoreKumar1
+```
+
+## Inspecting the data
+
+```{r}
+glimpse(KishoreKumar1)
+```
+
+## Data Munging
+
+```{r}
+KishoreKumar_modified1 <- KishoreKumar1 %>% 
+  janitor::clean_names(case = "snake") %>% 
+  mutate(
+    movie = as.factor(movie),
+    song = as.factor(song),
+    gem = as.factor(gem),
+    singer_s = as.factor(singer_s),
+    music_director_s = as.factor(music_director_s),
+    lyrics = as.factor(lyrics)
+  )
+
+glimpse(KishoreKumar_modified1)
+```
+
+## Data Dictionary
+
+Quantitative Data-
+
+year (dbl): Year in which the song was released
+
+Qualitative Data-
+
+movie (fct): Movie in which the song featured,
+
+song (fct): Name of the song,
+
+gem (fct): Is the song a gem?,
+
+singer_s (fct): Singer/ singers of the song,
+
+music_director_s: Music director/ directors of the song,
+
+lyrics (fct): Lyricists of the song
+
+## Summarising the data
+
+```{r}
+skimr::skim(KishoreKumar_modified1)
+```
+
+Comments
+The mean year is around 1973 and there is a standard deviation of around 6 years which means most of the songs were released around that year.
+
+## Visualising the number of songs released per year
+
+```{r}
+KishoreKumar_modified1 %>% 
+  gf_bar(~ year, color = ~gem, fill = ~gem, alpha = 0.4) %>% 
+  gf_labs(x = "Year", y = "Number of songs", title = "Plot 3A: Number of Songs per Year")
+```
+
+Comments
+MOst of the songs were released in 1973. The release of songs increased gradually from the 1950s, peaked in the 70s and started decreasing after 1973.
+
+## Visualising the data
+
+```{r}
+KishoreKumar_modified1 %>%
+  dplyr::count(music_director_s) %>%
+  gf_col(music_director_s ~ n, color = "blue", fill = "lightblue") %>%
+  gf_labs(x = "Number of Songs", y = "Music Director", title = "Plot 3B: Music Directors Collaborating with Kishore Kumar")
+```
+
+Comments
+The chart shows that Kishore Kumar collaborated the most with R.D. Burman and also collaborated a lot with Laxmikant Pyarelal, Kalyanji Anandji, S. D. Burman and Shankar Jaikishen.
+
+## Visualising the data
+
+```{r}
+KishoreKumar_modified1 %>%
+  dplyr::count(lyrics) %>%
+  gf_col(lyrics ~ n, color = "orange", fill = "orchid") %>%
+  gf_labs(x = "Number of Songs", y = "Lyricists", title = "Plot 3C: Lyricists Collaborating with Kishore Kumar")
+```
+
+Comments
+The chart shows that Kishore Kumar collaborated the most with Anand Bakshi and also collaborated a lot with Majrooh Sultanpuri, Rajendra Krishan, Sahil Ludhianvi, Indeevar, Gulshan Bawra, Hasrat Jaipuri and Gulzar
+

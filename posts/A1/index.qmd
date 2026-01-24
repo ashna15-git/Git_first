@@ -1,9 +1,11 @@
 ---
 title: "A1_assignment"
 df-print: paged
+order: 30
 ---
 
 ## Introduction
+
 This is my A1, I will create data viz and push to web and it will be part of my website posts folder
 
 ## Setup
@@ -26,5 +28,3 @@ penguins
 ```{r}
 penguins %>% gf_bar(~ species)
 ```
-
-

@@ -4,6 +4,7 @@ author: "Harlow Malloc"
 date: "2026-01-22"
 categories: [news, code, analysis]
 image: "image.jpg"
+order: 20
 ---
 
 This is a post with executable code.
