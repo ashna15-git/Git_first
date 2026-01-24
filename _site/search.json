@@ -7,6 +7,146 @@
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
+    "objectID": "posts/A1-3/index.html",
+    "href": "posts/A1-3/index.html",
+    "title": "Assignment 1-3",
+    "section": "",
+    "text": "I am examining a dataset of songs by Kishore Kumar"
+  },
+  {
+    "objectID": "posts/A1-3/index.html#introduction",
+    "href": "posts/A1-3/index.html#introduction",
+    "title": "Assignment 1-3",
+    "section": "",
+    "text": "I am examining a dataset of songs by Kishore Kumar"
+  },
+  {
+    "objectID": "posts/A1-3/index.html#setup",
+    "href": "posts/A1-3/index.html#setup",
+    "title": "Assignment 1-3",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.6\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.1     ✔ tibble    3.3.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(skimr)\nlibrary(ggformula)\n\nLoading required package: scales\n\nAttaching package: 'scales'\n\nThe following object is masked from 'package:purrr':\n\n    discard\n\nThe following object is masked from 'package:readr':\n\n    col_factor\n\nLoading required package: ggiraph\nLoading required package: ggridges\n\nNew to ggformula?  Try the tutorials: \n    learnr::run_tutorial(\"introduction\", package = \"ggformula\")\n    learnr::run_tutorial(\"refining\", package = \"ggformula\")\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test"
+  },
+  {
+    "objectID": "posts/A1-3/index.html#loading-the-data",
+    "href": "posts/A1-3/index.html#loading-the-data",
+    "title": "Assignment 1-3",
+    "section": "Loading the data",
+    "text": "Loading the data\n\nKishoreKumar1 &lt;- read_csv(\"../Data/KishoreKumar.csv\")\n\nRows: 556 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (6): Movie, Song, GEM!, Singer(s), Music Director(s), Lyrics\ndbl (1): Year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nKishoreKumar1\n\n# A tibble: 556 × 7\n    Year Movie        Song         `GEM!` `Singer(s)` `Music Director(s)` Lyrics\n   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;               &lt;chr&gt; \n 1  1949 Rimjhim      Jagmag jagm… &lt;NA&gt;   Kishore     Khemchand Prakash   Bhara…\n 2  1954 Naukri       Chhota sa g… &lt;NA&gt;   Kishore, U… Salil Chowdhury     Shail…\n 3  1955 Baap Re Baap Piya piya p… &lt;NA&gt;   Kishore, A… O P Nayyar          Jan N…\n 4  1955 Munimji      Jeevan ke s… Pictu… Kishore     S D Burman          Sahir…\n 5  1956 Funtoosh     Ae meri top… &lt;NA&gt;   Kishore     S D Burman          Sahir…\n 6  1956 Funtoosh     Dukhi man m… &lt;NA&gt;   Kishore     S D Burman          Sahir…\n 7  1956 Mem Sahib    Dil dil se … &lt;NA&gt;   Kishore     Madan Mohan         Rajen…\n 8  1956 Naya Andaz   Meri neendo… &lt;NA&gt;   Kishore, S… O P Nayyar          Jan N…\n 9  1956 New Delhi    Nakhrewaali… Pictu… Kishore     Shankar Jaikishen   Shail…\n10  1957 Aasha        Eena meena … &lt;NA&gt;   Kishore     C Ramchandra        Rajen…\n# ℹ 546 more rows"
+  },
+  {
+    "objectID": "posts/A1-3/index.html#inspecting-the-data",
+    "href": "posts/A1-3/index.html#inspecting-the-data",
+    "title": "Assignment 1-3",
+    "section": "Inspecting the data",
+    "text": "Inspecting the data\n\nglimpse(KishoreKumar1)\n\nRows: 556\nColumns: 7\n$ Year                &lt;dbl&gt; 1949, 1954, 1955, 1955, 1956, 1956, 1956, 1956, 19…\n$ Movie               &lt;chr&gt; \"Rimjhim\", \"Naukri\", \"Baap Re Baap\", \"Munimji\", \"F…\n$ Song                &lt;chr&gt; \"Jagmag jagmag karta nikla\", \"Chhota sa ghar hoga\"…\n$ `GEM!`              &lt;chr&gt; NA, NA, NA, \"Picture\", NA, NA, NA, NA, \"Picture\", …\n$ `Singer(s)`         &lt;chr&gt; \"Kishore\", \"Kishore, Usha Mangeshkar\", \"Kishore, A…\n$ `Music Director(s)` &lt;chr&gt; \"Khemchand Prakash\", \"Salil Chowdhury\", \"O P Nayya…\n$ Lyrics              &lt;chr&gt; \"Bharat Vyas\", \"Shailendra\", \"Jan Nisar Akhtar\", \"…"
+  },
+  {
+    "objectID": "posts/A1-3/index.html#data-munging",
+    "href": "posts/A1-3/index.html#data-munging",
+    "title": "Assignment 1-3",
+    "section": "Data Munging",
+    "text": "Data Munging\n\nKishoreKumar_modified1 &lt;- KishoreKumar1 %&gt;% \n  janitor::clean_names(case = \"snake\") %&gt;% \n  mutate(\n    movie = as.factor(movie),\n    song = as.factor(song),\n    gem = as.factor(gem),\n    singer_s = as.factor(singer_s),\n    music_director_s = as.factor(music_director_s),\n    lyrics = as.factor(lyrics)\n  )\n\nglimpse(KishoreKumar_modified1)\n\nRows: 556\nColumns: 7\n$ year             &lt;dbl&gt; 1949, 1954, 1955, 1955, 1956, 1956, 1956, 1956, 1956,…\n$ movie            &lt;fct&gt; Rimjhim, Naukri, Baap Re Baap, Munimji, Funtoosh, Fun…\n$ song             &lt;fct&gt; Jagmag jagmag karta nikla, Chhota sa ghar hoga, Piya …\n$ gem              &lt;fct&gt; NA, NA, NA, Picture, NA, NA, NA, NA, Picture, NA, NA,…\n$ singer_s         &lt;fct&gt; \"Kishore\", \"Kishore, Usha Mangeshkar\", \"Kishore, Asha…\n$ music_director_s &lt;fct&gt; Khemchand Prakash, Salil Chowdhury, O P Nayyar, S D B…\n$ lyrics           &lt;fct&gt; Bharat Vyas, Shailendra, Jan Nisar Akhtar, Sahir Ludh…"
+  },
+  {
+    "objectID": "posts/A1-3/index.html#data-dictionary",
+    "href": "posts/A1-3/index.html#data-dictionary",
+    "title": "Assignment 1-3",
+    "section": "Data Dictionary",
+    "text": "Data Dictionary\nQuantitative Data-\nyear (dbl): Year in which the song was released\nQualitative Data-\nmovie (fct): Movie in which the song featured,\nsong (fct): Name of the song,\ngem (fct): Is the song a gem?,\nsinger_s (fct): Singer/ singers of the song,\nmusic_director_s: Music director/ directors of the song,\nlyrics (fct): Lyricists of the song"
+  },
+  {
+    "objectID": "posts/A1-3/index.html#summarising-the-data",
+    "href": "posts/A1-3/index.html#summarising-the-data",
+    "title": "Assignment 1-3",
+    "section": "Summarising the data",
+    "text": "Summarising the data\n\nskimr::skim(KishoreKumar_modified1)\n\n\nData summary\n\n\nName\nKishoreKumar_modified1\n\n\nNumber of rows\n556\n\n\nNumber of columns\n7\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nfactor\n6\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: factor\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nordered\nn_unique\ntop_counts\n\n\n\n\nmovie\n0\n1.00\nFALSE\n313\nMer: 6, Aa : 5, Aap: 5, Cha: 5\n\n\nsong\n0\n1.00\nFALSE\n556\nAa : 1, Aa : 1, Aa : 1, Aad: 1\n\n\ngem\n485\n0.13\nFALSE\n1\nPic: 71\n\n\nsinger_s\n0\n1.00\nFALSE\n55\nKis: 257, Kis: 142, Kis: 97, Kis: 2\n\n\nmusic_director_s\n0\n1.00\nFALSE\n30\nR D: 197, Lax: 91, Kal: 57, S D: 54\n\n\nlyrics\n0\n1.00\nFALSE\n42\nAna: 176, Maj: 100, Ind: 35, Sah: 30\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nyear\n0\n1\n1973.36\n5.92\n1949\n1971\n1973\n1977\n1987\n▁▁▃▇▂\n\n\n\n\n\nComments The mean year is around 1973 and there is a standard deviation of around 6 years which means most of the songs were released around that year."
+  },
+  {
+    "objectID": "posts/A1-3/index.html#visualising-the-number-of-songs-released-per-year",
+    "href": "posts/A1-3/index.html#visualising-the-number-of-songs-released-per-year",
+    "title": "Assignment 1-3",
+    "section": "Visualising the number of songs released per year",
+    "text": "Visualising the number of songs released per year\n\nKishoreKumar_modified1 %&gt;% \n  gf_bar(~ year, color = ~gem, fill = ~gem, alpha = 0.4) %&gt;% \n  gf_labs(x = \"Year\", y = \"Number of songs\", title = \"Plot 3A: Number of Songs per Year\")\n\n\n\n\n\n\n\n\nComments MOst of the songs were released in 1973. The release of songs increased gradually from the 1950s, peaked in the 70s and started decreasing after 1973."
+  },
+  {
+    "objectID": "posts/A1-3/index.html#visualising-the-data",
+    "href": "posts/A1-3/index.html#visualising-the-data",
+    "title": "Assignment 1-3",
+    "section": "Visualising the data",
+    "text": "Visualising the data\n\nKishoreKumar_modified1 %&gt;%\n  dplyr::count(music_director_s) %&gt;%\n  gf_col(music_director_s ~ n, color = \"blue\", fill = \"lightblue\") %&gt;%\n  gf_labs(x = \"Number of Songs\", y = \"Music Director\", title = \"Plot 3B: Music Directors Collaborating with Kishore Kumar\")\n\n\n\n\n\n\n\n\nComments The chart shows that Kishore Kumar collaborated the most with R.D. Burman and also collaborated a lot with Laxmikant Pyarelal, Kalyanji Anandji, S. D. Burman and Shankar Jaikishen."
+  },
+  {
+    "objectID": "posts/A1-3/index.html#visualising-the-data-1",
+    "href": "posts/A1-3/index.html#visualising-the-data-1",
+    "title": "Assignment 1-3",
+    "section": "Visualising the data",
+    "text": "Visualising the data\n\nKishoreKumar_modified1 %&gt;%\n  dplyr::count(lyrics) %&gt;%\n  gf_col(lyrics ~ n, color = \"orange\", fill = \"orchid\") %&gt;%\n  gf_labs(x = \"Number of Songs\", y = \"Lyricists\", title = \"Plot 3C: Lyricists Collaborating with Kishore Kumar\")\n\n\n\n\n\n\n\n\nComments The chart shows that Kishore Kumar collaborated the most with Anand Bakshi and also collaborated a lot with Majrooh Sultanpuri, Rajendra Krishan, Sahil Ludhianvi, Indeevar, Gulshan Bawra, Hasrat Jaipuri and Gulzar"
+  },
+  {
+    "objectID": "posts/A1-1/index.html",
+    "href": "posts/A1-1/index.html",
+    "title": "Assignment A1-1",
+    "section": "",
+    "text": "I am going to examine the data pertaining to airbnb"
+  },
+  {
+    "objectID": "posts/A1-1/index.html#introduction",
+    "href": "posts/A1-1/index.html#introduction",
+    "title": "Assignment A1-1",
+    "section": "",
+    "text": "I am going to examine the data pertaining to airbnb"
+  },
+  {
+    "objectID": "posts/A1-1/index.html#setting-up-r-packages",
+    "href": "posts/A1-1/index.html#setting-up-r-packages",
+    "title": "Assignment A1-1",
+    "section": "Setting up R packages",
+    "text": "Setting up R packages\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.6\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.1     ✔ tibble    3.3.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(skimr)\nlibrary(ggformula)\n\nLoading required package: scales\n\nAttaching package: 'scales'\n\nThe following object is masked from 'package:purrr':\n\n    discard\n\nThe following object is masked from 'package:readr':\n\n    col_factor\n\nLoading required package: ggiraph\nLoading required package: ggridges\n\nNew to ggformula?  Try the tutorials: \n    learnr::run_tutorial(\"introduction\", package = \"ggformula\")\n    learnr::run_tutorial(\"refining\", package = \"ggformula\")\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test"
+  },
+  {
+    "objectID": "posts/A1-1/index.html#loading-the-data",
+    "href": "posts/A1-1/index.html#loading-the-data",
+    "title": "Assignment A1-1",
+    "section": "Loading the data",
+    "text": "Loading the data\n\nAirbnb &lt;- read_csv(\"../Data/airbnb.csv\")\n\nRows: 9995 Columns: 1\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (1): price\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nAirbnb\n\n# A tibble: 9,995 × 1\n   price\n   &lt;dbl&gt;\n 1    75\n 2   104\n 3   369\n 4   300\n 5    92\n 6    64\n 7   265\n 8    35\n 9   287\n10    69\n# ℹ 9,985 more rows"
+  },
+  {
+    "objectID": "posts/A1-1/index.html#inspecting-the-data",
+    "href": "posts/A1-1/index.html#inspecting-the-data",
+    "title": "Assignment A1-1",
+    "section": "Inspecting the data",
+    "text": "Inspecting the data\n\nglimpse(Airbnb)\n\nRows: 9,995\nColumns: 1\n$ price &lt;dbl&gt; 75, 104, 369, 300, 92, 64, 265, 35, 287, 69, 52, 23, 287, 87, 11…\n\n\nComments- There are 9995 rows and 1 column, which is the variable- price, in this dataset"
+  },
+  {
+    "objectID": "posts/A1-1/index.html#data-dictionary",
+    "href": "posts/A1-1/index.html#data-dictionary",
+    "title": "Assignment A1-1",
+    "section": "Data Dictionary",
+    "text": "Data Dictionary\nQuantitative Data-\nprice (dbl): Prices of various Airbnbs on the French Riviera"
+  },
+  {
+    "objectID": "posts/A1-1/index.html#displaying-prices-of-airbnbs-a-graph",
+    "href": "posts/A1-1/index.html#displaying-prices-of-airbnbs-a-graph",
+    "title": "Assignment A1-1",
+    "section": "Displaying prices of Airbnbs a graph",
+    "text": "Displaying prices of Airbnbs a graph\n\nAirbnb %&gt;% \n  gf_histogram(~price, color = \"red\", fill = \"pink\", alpha = 0.8)\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\nComments- There are a lot more Airbnbs which are listed at lower prices than one listed at higher prices."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Git_first",
+    "section": "",
+    "text": "A1_assignment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssignment A1-1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssignment 1-2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssignment 1-3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 22, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 19, 2026\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
     "objectID": "posts/A1/index.html",
     "href": "posts/A1/index.html",
     "title": "A1_assignment",
@@ -35,18 +175,88 @@
     "text": "First Graph\n\npenguins\n\n\n  \n\n\n\n\npenguins %&gt;% gf_bar(~ species)"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "posts/A1-2/index.html",
+    "href": "posts/A1-2/index.html",
+    "title": "Assignment 1-2",
     "section": "",
-    "text": "About this blog"
+    "text": "I am examining a large fertility related dataset"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Git_first",
+    "objectID": "posts/A1-2/index.html#introduction",
+    "href": "posts/A1-2/index.html#introduction",
+    "title": "Assignment 1-2",
     "section": "",
-    "text": "A1_assignment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 22, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 19, 2026\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "I am examining a large fertility related dataset"
+  },
+  {
+    "objectID": "posts/A1-2/index.html#setup",
+    "href": "posts/A1-2/index.html#setup",
+    "title": "Assignment 1-2",
+    "section": "Setup",
+    "text": "Setup\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.6\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.1     ✔ tibble    3.3.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(skimr)\nlibrary(ggformula)\n\nLoading required package: scales\n\nAttaching package: 'scales'\n\nThe following object is masked from 'package:purrr':\n\n    discard\n\nThe following object is masked from 'package:readr':\n\n    col_factor\n\nLoading required package: ggiraph\nLoading required package: ggridges\n\nNew to ggformula?  Try the tutorials: \n    learnr::run_tutorial(\"introduction\", package = \"ggformula\")\n    learnr::run_tutorial(\"refining\", package = \"ggformula\")\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test"
+  },
+  {
+    "objectID": "posts/A1-2/index.html#loading-the-data",
+    "href": "posts/A1-2/index.html#loading-the-data",
+    "title": "Assignment 1-2",
+    "section": "Loading the data",
+    "text": "Loading the data\n\nFertility_1 &lt;- read_csv(\"../Data/Fertility.csv\")\n\nRows: 254654 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (6): morekids, gender1, gender2, afam, hispanic, other\ndbl (3): rownames, age, work\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nFertility_1\n\n# A tibble: 254,654 × 9\n   rownames morekids gender1 gender2   age afam  hispanic other  work\n      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;\n 1        1 no       male    female     27 no    no       no        0\n 2        2 no       female  male       30 no    no       no       30\n 3        3 no       male    female     27 no    no       no        0\n 4        4 no       male    female     35 yes   no       no        0\n 5        5 no       female  female     30 no    no       no       22\n 6        6 no       male    female     26 no    no       no       40\n 7        7 no       female  male       29 no    no       no        0\n 8        8 no       male    male       33 no    no       no       52\n 9        9 no       female  male       29 no    no       no        0\n10       10 no       male    female     27 no    no       no        0\n# ℹ 254,644 more rows"
+  },
+  {
+    "objectID": "posts/A1-2/index.html#inspecting-the-data",
+    "href": "posts/A1-2/index.html#inspecting-the-data",
+    "title": "Assignment 1-2",
+    "section": "Inspecting the data",
+    "text": "Inspecting the data\n\nglimpse(Fertility_1)\n\nRows: 254,654\nColumns: 9\n$ rownames &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ morekids &lt;chr&gt; \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"…\n$ gender1  &lt;chr&gt; \"male\", \"female\", \"male\", \"male\", \"female\", \"male\", \"female\",…\n$ gender2  &lt;chr&gt; \"female\", \"male\", \"female\", \"female\", \"female\", \"female\", \"ma…\n$ age      &lt;dbl&gt; 27, 30, 27, 35, 30, 26, 29, 33, 29, 27, 28, 28, 35, 34, 32, 2…\n$ afam     &lt;chr&gt; \"no\", \"no\", \"no\", \"yes\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", …\n$ hispanic &lt;chr&gt; \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"…\n$ other    &lt;chr&gt; \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"…\n$ work     &lt;dbl&gt; 0, 30, 0, 0, 22, 40, 0, 52, 0, 0, 0, 52, 52, 52, 8, 7, 0, 40,…"
+  },
+  {
+    "objectID": "posts/A1-2/index.html#data-munging",
+    "href": "posts/A1-2/index.html#data-munging",
+    "title": "Assignment 1-2",
+    "section": "Data Munging",
+    "text": "Data Munging\n\nFertility_modified &lt;- Fertility_1 %&gt;% \n  \n  mutate(\n    morekids = as.factor(morekids),\n    gender1 = as.factor(gender1),\n    gender2 = as_factor(gender2),\n    afam = as.factor(afam),\n    hispanic = as.factor(hispanic),\n    other = as.factor(other)\n  ) %&gt;% \n  \n  dplyr::relocate(where(is.factor), .after = rownames)\n\nComments- The dataset in Fertility_1 is assigned to Fertility_modified so that the original dataset is not affected while modifying the data in the program. The variables morekids, gender1, gender2, afam, hispanic and other are converted from character variables to factor variables. The factor variables are all shifted to start of the table after rownames, after which the rest of the variables (age and work) follow."
+  },
+  {
+    "objectID": "posts/A1-2/index.html#data-dictionary",
+    "href": "posts/A1-2/index.html#data-dictionary",
+    "title": "Assignment 1-2",
+    "section": "Data Dictionary",
+    "text": "Data Dictionary\nQuantitative Data-\nage (dbl): Ages of married women with 2 or more children,\nwork (dbl): Number of weeks the married women worked in 1979\nQualitative Data-\nmorekids (fct): Does the married woman have more than 2 children?,\ngender1 (fct): Gender of the first child,\ngender2 (fct): Gender of the second child,\nafam (fct): Is the married woman African-American?,\nhispanic (fct): Is the married woman Hispanic?,\nother (fct): Is the married woman something other than African-American and Hispanic"
+  },
+  {
+    "objectID": "posts/A1-2/index.html#summarising-the-data",
+    "href": "posts/A1-2/index.html#summarising-the-data",
+    "title": "Assignment 1-2",
+    "section": "Summarising the data",
+    "text": "Summarising the data\n\nskimr::skim(Fertility_modified)\n\n\nData summary\n\n\nName\nFertility_modified\n\n\nNumber of rows\n254654\n\n\nNumber of columns\n9\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nfactor\n6\n\n\nnumeric\n3\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: factor\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nordered\nn_unique\ntop_counts\n\n\n\n\nmorekids\n0\n1\nFALSE\n2\nno: 157742, yes: 96912\n\n\ngender1\n0\n1\nFALSE\n2\nmal: 130984, fem: 123670\n\n\ngender2\n0\n1\nFALSE\n2\nmal: 130523, fem: 124131\n\n\nafam\n0\n1\nFALSE\n2\nno: 241498, yes: 13156\n\n\nhispanic\n0\n1\nFALSE\n2\nno: 235757, yes: 18897\n\n\nother\n0\n1\nFALSE\n2\nno: 240306, yes: 14348\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nrownames\n0\n1\n127327.50\n73512.42\n1\n63664.25\n127327.5\n190990.8\n254654\n▇▇▇▇▇\n\n\nage\n0\n1\n30.39\n3.39\n21\n28.00\n31.0\n33.0\n35\n▁▃▅▇▇\n\n\nwork\n0\n1\n19.02\n21.87\n0\n0.00\n5.0\n44.0\n52\n▇▁▁▁▃\n\n\n\n\n\nComments- The mean age of the married women is approxiamately 30.4 and the standard deviation is approxiamately 3.4 which means most women are around this age. The mean number of weeks the married women have worked for in 1979 is approxiamately 19 weeks and the standard deviation is approxiamately 22 which means there are very dirrent working hours of each women with some not working at all and some working much more than 19 weeks."
+  },
+  {
+    "objectID": "posts/A1-2/index.html#visualising-number-of-married-women",
+    "href": "posts/A1-2/index.html#visualising-number-of-married-women",
+    "title": "Assignment 1-2",
+    "section": "Visualising number of married women",
+    "text": "Visualising number of married women\n\nFertility_modified %&gt;% \n  gf_bar( ~ morekids, color = \"orange\", fill = \"pink\") %&gt;% \n  gf_labs(x = \"Have more children\", y = \"Married Women\", title = \"Plot 1A: Married women aged 21-35 who have more children\")\n\n\n\n\n\n\n\n\nComments- Most of the married women in the dataset have 2 children and only less than half of them have more than 2."
+  },
+  {
+    "objectID": "posts/A1-2/index.html#visualising-ages-of-the-women",
+    "href": "posts/A1-2/index.html#visualising-ages-of-the-women",
+    "title": "Assignment 1-2",
+    "section": "Visualising ages of the women",
+    "text": "Visualising ages of the women\n\nFertility_modified %&gt;% \n  gf_boxplot(morekids ~ age, orientation = \"y\", color = \"red\", fill = \"pink\", alpha = 0.8) %&gt;% \n  gf_labs(x = \"Have more children\", y = \"Age of married women\", title = \"Plot 1B: Ages of married women who have more than 2 children\")\n\n\n\n\n\n\n\n\nComments- The median age of women who have 2 children and the ones who have more is the same which is 31 years. The age range of both seem to be similar (2 children- 29-33 and 2+ children- 28-33) There some outliers in cases of married women who have more than 2 children at ages of 21 and 22."
+  },
+  {
+    "objectID": "posts/A1-2/index.html#visualising-race-of-the-women",
+    "href": "posts/A1-2/index.html#visualising-race-of-the-women",
+    "title": "Assignment 1-2",
+    "section": "Visualising race of the women",
+    "text": "Visualising race of the women\n\nFertility_modified %&gt;% \n  gf_bar( ~ afam, color = \"navy\", fill = \"lightblue\") %&gt;% \n  gf_labs(x = \"Have more children\", y = \"African American Married Women\", title = \"Plot 1C: African American Married Women who have more than 2 children\")\n\n\n\n\n\n\n\n\nComments- Most African-American married women have only 2 children."
+  },
+  {
+    "objectID": "posts/A1-2/index.html#visualising-no-of-working-weeks-of-the-women-in-1979",
+    "href": "posts/A1-2/index.html#visualising-no-of-working-weeks-of-the-women-in-1979",
+    "title": "Assignment 1-2",
+    "section": "Visualising no of working weeks of the women in 1979",
+    "text": "Visualising no of working weeks of the women in 1979\n\nFertility_modified %&gt;% \n  gf_bar( ~ work, color = ~ morekids, fill = ~ morekids) %&gt;% \n  gf_labs(x = \"No of weeks worked\", y = \"Married Women\", title = \"Plot 1D: Weeks Worked by Married Women with 2 or more Children in 1979\")\n\n\n\n\n\n\n\n\nComments- A good number of women worked all year round but most of the married women did not work all year round suggesting women with 2 or more children prefer not to work."
   },
   {
     "objectID": "posts/post-with-code/index.html",

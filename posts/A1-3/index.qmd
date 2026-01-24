@@ -3,6 +3,7 @@ title: "Assignment 1-3"
 ---
 
 ## Introduction
+
 I am examining a dataset of songs by Kishore Kumar
 
 ## Setup
@@ -70,8 +71,7 @@ lyrics (fct): Lyricists of the song
 skimr::skim(KishoreKumar_modified1)
 ```
 
-Comments
-The mean year is around 1973 and there is a standard deviation of around 6 years which means most of the songs were released around that year.
+Comments The mean year is around 1973 and there is a standard deviation of around 6 years which means most of the songs were released around that year.
 
 ## Visualising the number of songs released per year
 
@@ -81,8 +81,7 @@ KishoreKumar_modified1 %>%
   gf_labs(x = "Year", y = "Number of songs", title = "Plot 3A: Number of Songs per Year")
 ```
 
-Comments
-MOst of the songs were released in 1973. The release of songs increased gradually from the 1950s, peaked in the 70s and started decreasing after 1973.
+Comments MOst of the songs were released in 1973. The release of songs increased gradually from the 1950s, peaked in the 70s and started decreasing after 1973.
 
 ## Visualising the data
 
@@ -93,8 +92,7 @@ KishoreKumar_modified1 %>%
   gf_labs(x = "Number of Songs", y = "Music Director", title = "Plot 3B: Music Directors Collaborating with Kishore Kumar")
 ```
 
-Comments
-The chart shows that Kishore Kumar collaborated the most with R.D. Burman and also collaborated a lot with Laxmikant Pyarelal, Kalyanji Anandji, S. D. Burman and Shankar Jaikishen.
+Comments The chart shows that Kishore Kumar collaborated the most with R.D. Burman and also collaborated a lot with Laxmikant Pyarelal, Kalyanji Anandji, S. D. Burman and Shankar Jaikishen.
 
 ## Visualising the data
 
@@ -105,6 +103,4 @@ KishoreKumar_modified1 %>%
   gf_labs(x = "Number of Songs", y = "Lyricists", title = "Plot 3C: Lyricists Collaborating with Kishore Kumar")
 ```
 
-Comments
-The chart shows that Kishore Kumar collaborated the most with Anand Bakshi and also collaborated a lot with Majrooh Sultanpuri, Rajendra Krishan, Sahil Ludhianvi, Indeevar, Gulshan Bawra, Hasrat Jaipuri and Gulzar
-
+Comments The chart shows that Kishore Kumar collaborated the most with Anand Bakshi and also collaborated a lot with Majrooh Sultanpuri, Rajendra Krishan, Sahil Ludhianvi, Indeevar, Gulshan Bawra, Hasrat Jaipuri and Gulzar
