@@ -1,0 +1,187 @@
+---
+title: "Assignment 2-1"
+format: html
+editor: visual
+---
+
+## Setup
+
+```{r}
+#|label: setup
+library(tidyverse)
+library(skimr)
+library(ggformula)
+library(vcd)
+library(vcdExtra)
+library(vcdExtra)
+library(openintro)
+library(resampledata)
+library(ggalluvial)
+library(RColorBrewer)
+library(paletteer)
+```
+
+## Loading and Inspecting Data
+
+```{r}
+school_exp <- read_csv("../Data/CASchools.csv")
+glimpse(school_exp)
+```
+
+## Data Dictionary
+
+district: District code.
+
+school: School name.
+
+county: indicating county.
+
+grades: indicating grade span of district.
+
+students: Total enrollment.
+
+teachers: Number of teachers.
+
+calworks: Percent qualifying for CalWorks (income assistance).
+
+lunch: Percent qualifying for reduced-price lunch.
+
+computer: Number of computers.
+
+expenditure: Expenditure per student.
+
+income: District average income (in USD 1,000).
+
+english: Percent of English learners.
+
+read: Average reading score.
+
+math: Average math score.
+
+## Summarising the data
+
+```{r}
+skimr::skim(school_exp)
+```
+
+## Data Munging
+
+```{r}
+school_modified <- school_exp %>% 
+  mutate(
+    school = as_factor(school),
+    county = as_factor(county),
+    grades = as_factor(grades)
+  )
+glimpse(school_modified)
+```
+
+## Visualising the Distribution of School Expenditure by Grade
+
+```{r}
+school_modified %>% gf_histogram(~expenditure,color = "black", fill = ~grades) %>% 
+  gf_labs(
+    title = "Distribution of School Expenditure by Grade",
+    x = "Expenditure") %>% 
+  gf_annotate(geom = "rect", color= "black", fill= "white", alpha=0.3,
+              xmin = 4600, xmax = 5900, ymin = 0,  ymax = 50) %>% 
+  gf_annotate(geom="text", x = 6600, y = 50, label = "Most schools expend around 4,800–5,800 dollars") %>% 
+  gf_annotate(geom = "curve", x = 6500, y = 47,
+              xend = 6000, yend = 30, linewidth = 1,
+              curvature = -0.5,
+              arrow= arrow(length = unit(0.5, "cm")))
+```
+Comments
+
+The graph shows that the schools expend higher amounts on the higher grade range (KK-08) compared to the lower grade range (KK-06). It also shows that most schools spend around 4800 to 5800 dollars for both the grade ranges. Only a few schools expend higher amounts (above 5800 dollars approxiamtely) and they are mostly with the higher grade range.
+
+## Visualising ratio of Students to Teachers and impact on Math Scores
+
+```{r}
+school_modified %>% gf_point(teachers ~ students, fill = ~ math, shape =21, size=3) %>%
+  gf_refine(scale_fill_continuous(palette = "PuRd")) %>% 
+  gf_labs(
+    title = "Students to Teachers (Colored by Math Score)",
+    x = "Number of Students",
+    y = "Number of Teachers")%>% 
+  gf_annotate(geom = "rect", color= "black", fill= "white", alpha=0.3,
+              xmin = 0, xmax = 7000, ymin = 0,  ymax = 500) %>% 
+  gf_annotate(geom="text", x = 10000, y = 1000, label = "Students with highest math scores are clustered here") %>% 
+  gf_annotate(geom = "curve", x = 3500, y =900,
+              xend = 3500, yend = 550, linewidth = 1,
+              curvature = 0.5,
+              arrow= arrow(length = unit(0.5, "cm")))
+  
+
+school_modified %>% gf_point(students ~ teachers, color = ~ math) %>% 
+  gf_lm() %>% 
+  gf_labs(
+    title = "Students to Teachers (Colored by Math Score)",
+    x = "Number of Students",
+    y = "Number of Teachers")
+```
+Comments
+
+The graph shows that the student to teacher ratio is consistent, there is an increase in number of teachers with the number of students in the carious schools. The math scores are not necessarily affected by the no of students (or teachers) since high and low math scores are noticed in both cases.
+
+## Visualising if more Computers impact Read scores
+```{r}
+school_modified %>% gf_point(read ~ computer, fill = ~ expenditure, shape =21, size=3) %>%
+  gf_refine(scale_fill_continuous(palette = "PuRd")) %>%
+  gf_labs(
+    title = "No of Computers to Read Score (Colour = Expenditure)",
+    x = "Number of Computers",
+    y = "Read Score")%>% 
+   
+  gf_annotate(geom = "rect", color= "black", fill= "white", alpha=0.3,
+              xmin = 0, xmax = 200, ymin = 600, ymax = 705) %>% 
+  gf_annotate(geom="text", x = 1500, y = 710,
+  label = "Wide variation in reading scores despite low computer availability") %>% gf_annotate(geom = "curve", x = 1000, y =705,
+              xend = 200, yend = 670, linewidth = 1,
+              curvature = -0.5,
+              arrow= arrow(length = unit(0.5, "cm"))) 
+  
+
+school_modified %>% gf_point(read ~ computer, color = ~ expenditure) %>%
+  gf_lm() %>% 
+  gf_labs(
+    title = "No of Computers to Read Score (Colour = Expenditure)",
+    x = "Number of Computers",
+    y = "Read Score")
+```
+Comments
+
+The graph shows that there is a slight negative relationship between the number of computers and reading scores of students. Schools with very high computer counts do not show better reading scores and are mostly below the average. Although schools that expend more show students with better reading scores.
+
+## Visualising comparison of students' reading and math scores
+
+```{r}
+school_modified %>% gf_density(~ read, fill = "blue", color = "black") %>%
+  gf_density(~ math, fill = "firebrick", color = "black") %>%
+  gf_labs(
+    title = "Distribution of Read and Math Scores",
+    x = "Scores") %>% 
+  gf_annotate(geom = "rect", color= "black", fill= "white", alpha=0.3,
+              xmin = 640, xmax = 675, ymin = 0.017, ymax = 0.020) %>% 
+  gf_annotate(geom="text", x = 680, y = 0.012,
+  label = "Math scores slightly right, indicating higher scores") %>% 
+  gf_annotate(geom = "curve", x = 680, y =0.013,
+              xend = 676, yend = 0.018, linewidth = 1,
+              curvature = 0.5,
+              arrow= arrow(length = unit(0.5, "cm"))) 
+```
+Comments
+
+The graph shows that the reading and math score distributions are similar indicating that schools performing well in one subject also perform similarly in the other.
+
+## Visualising Math scores of students by County
+
+```{r}
+school_modified %>%  gf_density_ridges(county~ math, fill = ~ county) %>%
+  gf_labs(
+    title = "Math Scores of Students by County",
+    x = "Math Score")
+```
+Comments
+
+The graph shows that math score distributions across counties are similar, indicating that geographical region does not really impact the scores of students.

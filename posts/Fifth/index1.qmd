@@ -1,0 +1,45 @@
+---
+title: "Fifth_species"
+format: html
+editor: visual
+---
+
+---
+title: "Fifth"
+format: html
+---
+
+```{r}
+#|label: setup
+library(tidyverse)
+library(skimr)
+library(ggformula)
+```
+
+```{r}
+penguins %>% glimpse()
+```
+
+##Qual charts
+```{r}
+penguins %>% gf_bar(~ species)
+penguins %>% gf_bar(~ species, fill= ~species, alpha=0.3)
+```
+
+```{r}
+penguins %>% gf_bar(~ species, fill=~ island, colour= "black", alpha= 0.3)
+```
+
+##quant variables
+```{r}
+penguins %>% gf_density(~ body_mass)
+penguins %>% gf_density(~ body_mass, fill= ~ species )
+```
+
+```{r}
+penguins %>% gf_density(~ body_mass) %>% gf_facet_wrap(~ island)
+```
+
+```{r}
+penguins %>% gf_density_ridges(species ~ body_mass, fill= ~ species, alpha= 0.3)
+```

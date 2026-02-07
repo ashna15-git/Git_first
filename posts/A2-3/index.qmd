@@ -1,0 +1,81 @@
+---
+title: "Assignment 2-3"
+format: html
+editor: visual
+---
+
+## Setup
+
+```{r}
+#|label: setup
+library(tidyverse)
+library(skimr)
+library(ggformula)
+library(vcd)
+library(vcdExtra)
+library(vcdExtra)
+library(openintro)
+library(resampledata)
+library(ggalluvial)
+```
+
+## Loading and Inspecting the data
+
+```{r}
+vaccinations
+glimpse(vaccinations)
+```
+
+## Data Dictionary
+
+freq: number of respondents represented in each row
+
+subject: identifier linking respondents across surveys
+
+survey: survey designation from the ALP website
+
+start_date: start date of survey
+
+end_date: end date of survey
+
+response: discretized probability of vaccinating for influenza
+
+##Summarising the Data
+
+```{r}
+skim(vaccinations)
+```
+
+## Visualising the Frequency of Responses about people's Influenza Vaccination intent
+
+```{r}
+vaccinations %>% gf_boxplot(response ~ freq, fill = ~response, alpha = 0.7) %>% 
+  gf_labs(title = "Frequency of Responses for Vaccination")
+```
+Comments
+
+The graph shows that most people have opted for “Always” indicating that there is strong willingness to get vaccinated. There are quite a few people who have opted for “Sometimes” that many people are uncertain about vaccination. “Never” responses are mostly low in frequency, suggesting complete rejection of vaccination is less prevalent among people across surveys. There are also a few people who have not chosen anything suggesting indecisiveness among some, who are not sure of what they would opt for.
+
+## Visualising people's Influenza Vaccination intent across Surveys
+
+```{r}
+vaccinations %>% gf_col(freq ~ survey, fill = ~response) 
+```
+Comments
+
+The frequency of vaccination intent differs visiby by survey, suggesting that different survey context get different responses. “Sometimes” and "Missing" responses are quite noticeable, suggesting many people do not have enough information about influenza vaccination.
+
+## Visualising people's Vaccination intent through subjects
+
+```{r}
+vaccinations %>% 
+  
+  ggplot(aes(axis1 = subject, axis2 = survey, axis3 = response)) + 
+  geom_alluvium(aes(fill = subject), alpha = 0.5) + 
+  geom_stratum() + 
+  geom_label(stat = "stratum", aes(label = after_stat(stratum))) + scale_x_discrete(limits = c("Subject", "Survey", "Response")) +
+  labs(title = "Resume quality over Etnicity")
+```
+Comments
+
+The graph shows that the same subjects appear across multiple surveys, showing how different respondents contribute to multiple different vaccination surveys. Flows from surveys to responses are spread across all intents, indicating no single survey has one same response for all.

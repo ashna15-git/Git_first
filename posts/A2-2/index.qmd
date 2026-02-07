@@ -1,0 +1,52 @@
+---
+title: "Assignment 2-2"
+format: html
+editor: visual
+---
+
+## Setup
+
+```{r}
+#|label: setup
+library(tidyverse)
+library(skimr)
+library(ggformula)
+library(vcd)
+library(vcdExtra)
+library(vcdExtra)
+library(openintro)
+library(resampledata)
+library(ggalluvial)
+```
+
+## Loading the data
+
+```{r}
+gilby_data <- read_csv("../Data/gilby.csv")
+glimpse(gilby_data)
+```
+
+
+```{r}
+Gilby
+```
+
+## Plotting the data
+
+```{r}
+vcd::structable(Dullness ~ Clothing, data = Gilby) %>% 
+  addmargins()
+vcd::structable(Dullness ~ Clothing, data = Gilby) %>%
+  vcd::mosaic()
+vcd::mosaic(Gilby, 
+            gp = shading_max, direction = "v",
+            main = "Intellingence relation to Clothing",
+labeling = labeling_border(
+                varnames = c("F", "F"), 
+                rot_labels = c(90,0,0,0), 
+                just_labels = c("left", 
+                                "left", 
+                                "left", 
+                                "right"))) 
+```
+
