@@ -4,6 +4,9 @@ format: html
 editor: visual
 ---
 
+## Introduction
+I am examining a dataset reguarding schools in the different counties in America.
+
 ## Setup
 
 ```{r}

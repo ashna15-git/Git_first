@@ -4,6 +4,9 @@ format: html
 editor: visual
 ---
 
+## Introduction
+I am examining a dataset reguarding surveys relating to Influenza vaccination
+
 ## Setup
 
 ```{r}
@@ -17,6 +20,8 @@ library(vcdExtra)
 library(openintro)
 library(resampledata)
 library(ggalluvial)
+library(RColorBrewer)
+library(paletteer)
 ```
 
 ## Loading and Inspecting the data
@@ -50,7 +55,8 @@ skim(vaccinations)
 
 ```{r}
 vaccinations %>% gf_boxplot(response ~ freq, fill = ~response, alpha = 0.7) %>% 
-  gf_labs(title = "Frequency of Responses for Vaccination")
+  gf_labs(title = "Frequency of Responses for Vaccination") %>% 
+  gf_refine(scale_fill_paletteer_d(`"dutchmasters::pearl_earring"`))
 ```
 Comments
 
@@ -59,7 +65,8 @@ The graph shows that most people have opted for “Always” indicating that the
 ## Visualising people's Influenza Vaccination intent across Surveys
 
 ```{r}
-vaccinations %>% gf_col(freq ~ survey, fill = ~response) 
+vaccinations %>% gf_col(freq ~ survey, fill = ~response) %>% 
+  gf_refine(scale_fill_paletteer_d(`"dutchmasters::pearl_earring"`))
 ```
 Comments
 

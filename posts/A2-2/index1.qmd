@@ -4,6 +4,9 @@ format: html
 editor: visual
 ---
 
+## Introduction
+I am examining a dataset reguarding applicant resumes and background in job applications 
+
 ## Setup
 
 ```{r}
@@ -123,7 +126,8 @@ glimpse(resume_modified)
 resume_modified %>% gf_bar(~ ethnicity, fill = ~ call, color = "black") %>%
   gf_facet_wrap(~ quality) %>%
   gf_labs(title = "Callbacks by Ethnicity despite Quality of Resumes",
-          x="Ethnicity")
+          x="Ethnicity") %>% 
+  gf_refine(scale_fill_paletteer_d("basetheme::royal"))
 ```
 Comments
 
@@ -143,7 +147,8 @@ The graph shows that the applicants with additional skills receive more callback
 
 ```{r}
 resume_modified %>% gf_boxplot(call ~ experience, fill = ~ call) %>%
-  gf_labs(title = "Experience Levels of Applicants and Callbacks")
+  gf_labs(title = "Experience Levels of Applicants and Callbacks") %>% 
+  gf_refine(scale_fill_paletteer_d("basetheme::royal"))
 ```
 Comments
 
@@ -154,7 +159,8 @@ The graph shows that the callbacks are not really dependent on the applicants' y
 ```{r}
 resume_modified %>% gf_density(~ experience, fill = ~ email, color = "black") %>%
   gf_facet_wrap(~ call) %>%
-  gf_labs(title = "Callbacks by Experience and Emails")
+  gf_labs(title = "Callbacks by Experience and Emails") %>% 
+  gf_refine(scale_fill_paletteer_d("basetheme::minimal"))
 ```
 Comments
 
@@ -169,7 +175,7 @@ resume_modified %>%
   geom_alluvium(aes(fill = gender), alpha = 0.5) + 
   geom_stratum() + 
   geom_label(stat = "stratum", aes(label = after_stat(stratum))) + scale_x_discrete(limits = c("Gender", "Ethnicity", "Resume Quality", "Callback")) +
-  labs(title = "Callbacks based on Gender, Ethnicity and Quality of Resume")
+  labs(title = "Callbacks based on Gender, Ethnicity and Quality of Resume") 
 ```
 Comments
 
