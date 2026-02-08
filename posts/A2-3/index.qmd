@@ -5,6 +5,7 @@ editor: visual
 ---
 
 ## Introduction
+
 I am examining a dataset reguarding surveys relating to Influenza vaccination
 
 ## Setup
@@ -58,6 +59,7 @@ vaccinations %>% gf_boxplot(response ~ freq, fill = ~response, alpha = 0.7) %>%
   gf_labs(title = "Frequency of Responses for Vaccination") %>% 
   gf_refine(scale_fill_paletteer_d(`"dutchmasters::pearl_earring"`))
 ```
+
 Comments
 
 The graph shows that most people have opted for “Always” indicating that there is strong willingness to get vaccinated. There are quite a few people who have opted for “Sometimes” that many people are uncertain about vaccination. “Never” responses are mostly low in frequency, suggesting complete rejection of vaccination is less prevalent among people across surveys. There are also a few people who have not chosen anything suggesting indecisiveness among some, who are not sure of what they would opt for.
@@ -68,6 +70,7 @@ The graph shows that most people have opted for “Always” indicating that the
 vaccinations %>% gf_col(freq ~ survey, fill = ~response) %>% 
   gf_refine(scale_fill_paletteer_d(`"dutchmasters::pearl_earring"`))
 ```
+
 Comments
 
 The frequency of vaccination intent differs visiby by survey, suggesting that different survey context get different responses. “Sometimes” and "Missing" responses are quite noticeable, suggesting many people do not have enough information about influenza vaccination.
@@ -83,6 +86,7 @@ vaccinations %>%
   geom_label(stat = "stratum", aes(label = after_stat(stratum))) + scale_x_discrete(limits = c("Subject", "Survey", "Response")) +
   labs(title = "Resume quality over Etnicity")
 ```
+
 Comments
 
 The graph shows that the same subjects appear across multiple surveys, showing how different respondents contribute to multiple different vaccination surveys. Flows from surveys to responses are spread across all intents, indicating no single survey has one same response for all.

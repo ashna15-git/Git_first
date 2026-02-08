@@ -5,7 +5,8 @@ editor: visual
 ---
 
 ## Introduction
-I am examining a dataset reguarding applicant resumes and background in job applications 
+
+I am examining a dataset reguarding applicant resumes and background in job applications
 
 ## Setup
 
@@ -85,7 +86,6 @@ reqorg: Does the ad mention some organizational skills requirement?
 
 industry: indicating type of employer industry.
 
-
 ## Data Munging
 
 ```{r}
@@ -129,16 +129,18 @@ resume_modified %>% gf_bar(~ ethnicity, fill = ~ call, color = "black") %>%
           x="Ethnicity") %>% 
   gf_refine(scale_fill_paletteer_d("basetheme::royal"))
 ```
+
 Comments
 
 The graph shows that in both the low and high quality resumes, caucasian applicants receive more callbacks for jobs than afam applicants. There is a visible increase in number of callbacks with better quality resumes, but the difference between both ethnicities still remains.
 
-## Visualising the impact of Additional Skills in receiving Callbacks for Jobs 
+## Visualising the impact of Additional Skills in receiving Callbacks for Jobs
 
 ```{r}
 acall_table <- vcd::structable(special ~ call, data = resume_modified)
 vcd::mosaic(acall_table, gp = shading_max, main = "Additional Skills impacting Callbacks")
 ```
+
 Comments
 
 The graph shows that the applicants with additional skills receive more callbacks than those with none. Therefore stating that applicants have with additional skills have a better chance of getting job placements.
@@ -150,6 +152,7 @@ resume_modified %>% gf_boxplot(call ~ experience, fill = ~ call) %>%
   gf_labs(title = "Experience Levels of Applicants and Callbacks") %>% 
   gf_refine(scale_fill_paletteer_d("basetheme::royal"))
 ```
+
 Comments
 
 The graph shows that the callbacks are not really dependent on the applicants' years of experience as applicants who have and have not received callbacks have similar years of experience. The median year of both are also very similar. Although there is a suprising outlier who has not received a callback even with almost 50 years of experience.
@@ -162,6 +165,7 @@ resume_modified %>% gf_density(~ experience, fill = ~ email, color = "black") %>
   gf_labs(title = "Callbacks by Experience and Emails") %>% 
   gf_refine(scale_fill_paletteer_d("basetheme::minimal"))
 ```
+
 Comments
 
 The graph shows that the applicants who received callbacks and have email are more widespread. In case of applicants who have not received callbacks, the ones who have and have not emailed have similar distributions showing no real difference. This suggests, applicants who email have a better chance of recieving callbacks despite their experience level.
@@ -177,6 +181,7 @@ resume_modified %>%
   geom_label(stat = "stratum", aes(label = after_stat(stratum))) + scale_x_discrete(limits = c("Gender", "Ethnicity", "Resume Quality", "Callback")) +
   labs(title = "Callbacks based on Gender, Ethnicity and Quality of Resume") 
 ```
+
 Comments
 
 The grapf shows that despite having high resume quality, a large portion of applicants, especially from afam groups end up receiving no callbacks. In terms of gender, more female applicants have received callbacks as compared to male applicants.
@@ -192,6 +197,7 @@ resume_modified %>%
   geom_label(stat = "stratum", aes(label = after_stat(stratum))) + scale_x_discrete(limits = c("College", "Additional Skills", "Resume Quality", "Callback")) +
   labs(title = "Resume quality over Etnicity")
 ```
+
 Comments
 
 The graph shows that many applicants with college education and additional skills have high-quality resumes but still a large number still ends up receiving no callbacks showing that there is no necessary relation between them. Even among applicants who have all three advantages, college, special skills, and high quality resumes, a vast majority does not receive any callbacks, suggesting other factors which are not a show of merit have an impact.
