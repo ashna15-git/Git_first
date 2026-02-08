@@ -21,6 +21,8 @@ library(vcdExtra)
 library(openintro)
 library(resampledata)
 library(ggalluvial)
+library(RColorBrewer)
+library(paletteer)
 ```
 
 ## Loading and Inspecting the data
@@ -195,7 +197,7 @@ resume_modified %>%
   geom_alluvium(aes(fill = college), alpha = 0.5) + 
   geom_stratum() + 
   geom_label(stat = "stratum", aes(label = after_stat(stratum))) + scale_x_discrete(limits = c("College", "Additional Skills", "Resume Quality", "Callback")) +
-  labs(title = "Resume quality over Etnicity")
+  labs(title = "Callbacks based on College, Additional Skills and Quality of Resume")
 ```
 
 Comments

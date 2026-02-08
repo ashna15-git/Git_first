@@ -234,7 +234,7 @@ font-style: inherit;">0.8</span>)</span></code></pre></div></div>
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A1-1/</guid>
-  <pubDate>Sat, 24 Jan 2026 21:34:16 GMT</pubDate>
+  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
 </item>
 <item>
   <title>Assignment 1-2</title>
@@ -832,7 +832,7 @@ font-style: inherit;">"Plot 1D: Weeks Worked by Married Women with 2 or more Chi
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A1-2/</guid>
-  <pubDate>Sat, 24 Jan 2026 21:34:16 GMT</pubDate>
+  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
 </item>
 <item>
   <title>Assignment 1-3</title>
@@ -1376,7 +1376,3009 @@ font-style: inherit;">"Plot 3C: Lyricists Collaborating with Kishore Kumar"</spa
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A1-3/</guid>
-  <pubDate>Sat, 24 Jan 2026 21:34:16 GMT</pubDate>
+  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+</item>
+<item>
+  <title>Assignment 2-1</title>
+  <link>https://your-website-url.example.com/posts/A2-1/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I am examining a dataset reguarding schools in the different counties in America.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#|label: setup</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.1     ✔ tibble    3.3.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(skimr)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggformula)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: scales
+
+Attaching package: 'scales'
+
+The following object is masked from 'package:purrr':
+
+    discard
+
+The following object is masked from 'package:readr':
+
+    col_factor
+
+Loading required package: ggiraph
+Loading required package: ggridges
+
+New to ggformula?  Try the tutorials: 
+    learnr::run_tutorial("introduction", package = "ggformula")
+    learnr::run_tutorial("refining", package = "ggformula")</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcd)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: grid</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcdExtra)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: gnm
+Registered S3 method overwritten by 'vcdExtra':
+  method      from
+  print.Kappa vcd 
+
+Attaching package: 'vcdExtra'
+
+The following object is masked from 'package:vcd':
+
+    woolf_test</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcdExtra)</span>
+<span id="cb9-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(openintro)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: airports
+Loading required package: cherryblossom
+Loading required package: usdata</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(resampledata)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'resampledata'
+
+The following object is masked from 'package:vcdExtra':
+
+    TV
+
+The following object is masked from 'package:datasets':
+
+    Titanic</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggalluvial)</span>
+<span id="cb13-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(RColorBrewer)</span>
+<span id="cb13-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(paletteer)</span></code></pre></div></div>
+</div>
+</section>
+<section id="loading-and-inspecting-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-and-inspecting-data">Loading and Inspecting Data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">school_exp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/CASchools.csv"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 420 Columns: 15
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): school, county, grades
+dbl (12): rownames, district, students, teachers, calworks, lunch, computer,...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(school_exp)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 420
+Columns: 15
+$ rownames    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
+$ district    &lt;dbl&gt; 75119, 61499, 61549, 61457, 61523, 62042, 68536, 63834, 62…
+$ school      &lt;chr&gt; "Sunol Glen Unified", "Manzanita Elementary", "Thermalito …
+$ county      &lt;chr&gt; "Alameda", "Butte", "Butte", "Butte", "Butte", "Fresno", "…
+$ grades      &lt;chr&gt; "KK-08", "KK-08", "KK-08", "KK-08", "KK-08", "KK-08", "KK-…
+$ students    &lt;dbl&gt; 195, 240, 1550, 243, 1335, 137, 195, 888, 379, 2247, 446, …
+$ teachers    &lt;dbl&gt; 10.90, 11.15, 82.90, 14.00, 71.50, 6.40, 10.00, 42.50, 19.…
+$ calworks    &lt;dbl&gt; 0.5102, 15.4167, 55.0323, 36.4754, 33.1086, 12.3188, 12.90…
+$ lunch       &lt;dbl&gt; 2.0408, 47.9167, 76.3226, 77.0492, 78.4270, 86.9565, 94.62…
+$ computer    &lt;dbl&gt; 67, 101, 169, 85, 171, 25, 28, 66, 35, 0, 86, 56, 25, 0, 3…
+$ expenditure &lt;dbl&gt; 6384.911, 5099.381, 5501.955, 7101.831, 5235.988, 5580.147…
+$ income      &lt;dbl&gt; 22.690001, 9.824000, 8.978000, 8.978000, 9.080333, 10.4150…
+$ english     &lt;dbl&gt; 0.000000, 4.583333, 30.000002, 0.000000, 13.857677, 12.408…
+$ read        &lt;dbl&gt; 691.6, 660.5, 636.3, 651.9, 641.8, 605.7, 604.5, 605.5, 60…
+$ math        &lt;dbl&gt; 690.0, 661.9, 650.9, 643.5, 639.9, 605.4, 609.0, 612.5, 61…</code></pre>
+</div>
+</div>
+</section>
+<section id="data-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
+<p>district: District code.</p>
+<p>school: School name.</p>
+<p>county: indicating county.</p>
+<p>grades: indicating grade span of district.</p>
+<p>students: Total enrollment.</p>
+<p>teachers: Number of teachers.</p>
+<p>calworks: Percent qualifying for CalWorks (income assistance).</p>
+<p>lunch: Percent qualifying for reduced-price lunch.</p>
+<p>computer: Number of computers.</p>
+<p>expenditure: Expenditure per student.</p>
+<p>income: District average income (in USD 1,000).</p>
+<p>english: Percent of English learners.</p>
+<p>read: Average reading score.</p>
+<p>math: Average math score.</p>
+</section>
+<section id="summarising-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="summarising-the-data">Summarising the data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">skimr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">skim</span>(school_exp)</span></code></pre></div></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">school_exp</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">420</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">school</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">409</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">county</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">grades</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">rownames</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">210.50</td>
+<td style="text-align: right;">121.39</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">105.75</td>
+<td style="text-align: right;">210.50</td>
+<td style="text-align: right;">315.25</td>
+<td style="text-align: right;">420.00</td>
+<td style="text-align: left;">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">district</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">67472.81</td>
+<td style="text-align: right;">3466.99</td>
+<td style="text-align: right;">61382.00</td>
+<td style="text-align: right;">64307.75</td>
+<td style="text-align: right;">67760.50</td>
+<td style="text-align: right;">70419.00</td>
+<td style="text-align: right;">75440.00</td>
+<td style="text-align: left;">▇▆▇▇▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">students</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2628.79</td>
+<td style="text-align: right;">3913.10</td>
+<td style="text-align: right;">81.00</td>
+<td style="text-align: right;">379.00</td>
+<td style="text-align: right;">950.50</td>
+<td style="text-align: right;">3008.00</td>
+<td style="text-align: right;">27176.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">teachers</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">129.07</td>
+<td style="text-align: right;">187.91</td>
+<td style="text-align: right;">4.85</td>
+<td style="text-align: right;">19.66</td>
+<td style="text-align: right;">48.56</td>
+<td style="text-align: right;">146.35</td>
+<td style="text-align: right;">1429.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">calworks</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13.25</td>
+<td style="text-align: right;">11.45</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">4.40</td>
+<td style="text-align: right;">10.52</td>
+<td style="text-align: right;">18.98</td>
+<td style="text-align: right;">78.99</td>
+<td style="text-align: left;">▇▃▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lunch</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">44.71</td>
+<td style="text-align: right;">27.12</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">23.28</td>
+<td style="text-align: right;">41.75</td>
+<td style="text-align: right;">66.86</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: left;">▆▇▆▅▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">computer</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">303.38</td>
+<td style="text-align: right;">441.34</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">46.00</td>
+<td style="text-align: right;">117.50</td>
+<td style="text-align: right;">375.25</td>
+<td style="text-align: right;">3324.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">expenditure</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5312.41</td>
+<td style="text-align: right;">633.94</td>
+<td style="text-align: right;">3926.07</td>
+<td style="text-align: right;">4906.18</td>
+<td style="text-align: right;">5214.52</td>
+<td style="text-align: right;">5601.40</td>
+<td style="text-align: right;">7711.51</td>
+<td style="text-align: left;">▂▇▃▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">income</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15.32</td>
+<td style="text-align: right;">7.23</td>
+<td style="text-align: right;">5.34</td>
+<td style="text-align: right;">10.64</td>
+<td style="text-align: right;">13.73</td>
+<td style="text-align: right;">17.63</td>
+<td style="text-align: right;">55.33</td>
+<td style="text-align: left;">▇▃▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">english</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15.77</td>
+<td style="text-align: right;">18.29</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.94</td>
+<td style="text-align: right;">8.78</td>
+<td style="text-align: right;">22.97</td>
+<td style="text-align: right;">85.54</td>
+<td style="text-align: left;">▇▂▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">read</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">654.97</td>
+<td style="text-align: right;">20.11</td>
+<td style="text-align: right;">604.50</td>
+<td style="text-align: right;">640.40</td>
+<td style="text-align: right;">655.75</td>
+<td style="text-align: right;">668.73</td>
+<td style="text-align: right;">704.00</td>
+<td style="text-align: left;">▂▆▇▆▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">math</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">653.34</td>
+<td style="text-align: right;">18.75</td>
+<td style="text-align: right;">605.40</td>
+<td style="text-align: right;">639.38</td>
+<td style="text-align: right;">652.45</td>
+<td style="text-align: right;">665.85</td>
+<td style="text-align: right;">709.50</td>
+<td style="text-align: left;">▁▆▇▃▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="data-munging" class="level2">
+<h2 class="anchored" data-anchor-id="data-munging">Data Munging</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">school_modified <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> school_exp <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb19-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">school =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(school),</span>
+<span id="cb19-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">county =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(county),</span>
+<span id="cb19-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">grades =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(grades)</span>
+<span id="cb19-6">  )</span>
+<span id="cb19-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(school_modified)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 420
+Columns: 15
+$ rownames    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
+$ district    &lt;dbl&gt; 75119, 61499, 61549, 61457, 61523, 62042, 68536, 63834, 62…
+$ school      &lt;fct&gt; Sunol Glen Unified, Manzanita Elementary, Thermalito Union…
+$ county      &lt;fct&gt; Alameda, Butte, Butte, Butte, Butte, Fresno, San Joaquin, …
+$ grades      &lt;fct&gt; KK-08, KK-08, KK-08, KK-08, KK-08, KK-08, KK-08, KK-08, KK…
+$ students    &lt;dbl&gt; 195, 240, 1550, 243, 1335, 137, 195, 888, 379, 2247, 446, …
+$ teachers    &lt;dbl&gt; 10.90, 11.15, 82.90, 14.00, 71.50, 6.40, 10.00, 42.50, 19.…
+$ calworks    &lt;dbl&gt; 0.5102, 15.4167, 55.0323, 36.4754, 33.1086, 12.3188, 12.90…
+$ lunch       &lt;dbl&gt; 2.0408, 47.9167, 76.3226, 77.0492, 78.4270, 86.9565, 94.62…
+$ computer    &lt;dbl&gt; 67, 101, 169, 85, 171, 25, 28, 66, 35, 0, 86, 56, 25, 0, 3…
+$ expenditure &lt;dbl&gt; 6384.911, 5099.381, 5501.955, 7101.831, 5235.988, 5580.147…
+$ income      &lt;dbl&gt; 22.690001, 9.824000, 8.978000, 8.978000, 9.080333, 10.4150…
+$ english     &lt;dbl&gt; 0.000000, 4.583333, 30.000002, 0.000000, 13.857677, 12.408…
+$ read        &lt;dbl&gt; 691.6, 660.5, 636.3, 651.9, 641.8, 605.7, 604.5, 605.5, 60…
+$ math        &lt;dbl&gt; 690.0, 661.9, 650.9, 643.5, 639.9, 605.4, 609.0, 612.5, 61…</code></pre>
+</div>
+</div>
+</section>
+<section id="visualising-the-distribution-of-school-expenditure-by-grade" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-the-distribution-of-school-expenditure-by-grade">Visualising the Distribution of School Expenditure by Grade</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">school_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_histogram</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>expenditure,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>grades) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb21-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb21-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distribution of School Expenditure by Grade"</span>,</span>
+<span id="cb21-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Expenditure"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb21-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rect"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>,</span>
+<span id="cb21-6">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4600</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5900</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb21-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6600</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Most schools expend around 4,800–5,800 dollars"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb21-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"curve"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6500</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">47</span>,</span>
+<span id="cb21-9">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb21-10">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">curvature =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,</span>
+<span id="cb21-11">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>)))</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-1/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that the schools expend higher amounts on the higher grade range (KK-08) compared to the lower grade range (KK-06). It also shows that most schools spend around 4800 to 5800 dollars for both the grade ranges. Only a few schools expend higher amounts (above 5800 dollars approxiamtely) and they are mostly with the higher grade range.</p>
+</section>
+<section id="visualising-ratio-of-students-to-teachers-and-impact-on-math-scores" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-ratio-of-students-to-teachers-and-impact-on-math-scores">Visualising ratio of Students to Teachers and impact on Math Scores</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">school_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_point</span>(teachers <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> students, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> math, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb23-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_refine</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PuRd"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb23-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb23-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Students to Teachers (Colored by Math Score)"</span>,</span>
+<span id="cb23-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of Students"</span>,</span>
+<span id="cb23-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of Teachers"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb23-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rect"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>,</span>
+<span id="cb23-8">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb23-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Students with highest math scores are clustered here"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb23-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"curve"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3500</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">900</span>,</span>
+<span id="cb23-11">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3500</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">550</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb23-12">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">curvature =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,</span>
+<span id="cb23-13">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>)))</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-1/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">school_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_point</span>(students <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> teachers, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> math) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb24-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_lm</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb24-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb24-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Students to Teachers (Colored by Math Score)"</span>,</span>
+<span id="cb24-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of Students"</span>,</span>
+<span id="cb24-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of Teachers"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation:
+colour.
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-1/index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that the student to teacher ratio is consistent, there is an increase in number of teachers with the number of students in the carious schools. The math scores are not necessarily affected by the no of students (or teachers) since high and low math scores are noticed in both cases.</p>
+</section>
+<section id="visualising-if-more-computers-impact-read-scores" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-if-more-computers-impact-read-scores">Visualising if more Computers impact Read scores</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">school_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_point</span>(read <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> computer, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> expenditure, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb26-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_refine</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PuRd"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb26-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb26-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"No of Computers to Read Score (Colour = Expenditure)"</span>,</span>
+<span id="cb26-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of Computers"</span>,</span>
+<span id="cb26-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Read Score"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb26-7">   </span>
+<span id="cb26-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rect"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>,</span>
+<span id="cb26-9">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">600</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">705</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb26-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1500</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">710</span>,</span>
+<span id="cb26-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Wide variation in reading scores despite low computer availability"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"curve"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">705</span>,</span>
+<span id="cb26-12">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">670</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb26-13">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">curvature =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,</span>
+<span id="cb26-14">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>))) </span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-1/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">school_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_point</span>(read <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> computer, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> expenditure) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb27-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_lm</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb27-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb27-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"No of Computers to Read Score (Colour = Expenditure)"</span>,</span>
+<span id="cb27-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of Computers"</span>,</span>
+<span id="cb27-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Read Score"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation:
+colour.
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-1/index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that there is a slight negative relationship between the number of computers and reading scores of students. Schools with very high computer counts do not show better reading scores and are mostly below the average. Although schools that expend more show students with better reading scores.</p>
+</section>
+<section id="visualising-comparison-of-students-reading-and-math-scores" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-comparison-of-students-reading-and-math-scores">Visualising comparison of students’ reading and math scores</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">school_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> read, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb29-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> math, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"firebrick"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb29-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb29-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distribution of Read and Math Scores"</span>,</span>
+<span id="cb29-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Scores"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb29-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rect"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>,</span>
+<span id="cb29-7">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">640</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">675</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.017</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.020</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb29-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">680</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.012</span>,</span>
+<span id="cb29-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Math scores slightly right, indicating higher scores"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb29-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_annotate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"curve"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">680</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.013</span>,</span>
+<span id="cb29-11">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">676</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yend =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.018</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb29-12">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">curvature =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,</span>
+<span id="cb29-13">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>))) </span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-1/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that the reading and math score distributions are similar indicating that schools performing well in one subject also perform similarly in the other.</p>
+</section>
+<section id="visualising-math-scores-of-students-by-county" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-math-scores-of-students-by-county">Visualising Math scores of students by County</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1">school_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density_ridges</span>(county<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> math, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> county) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb30-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb30-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Math Scores of Students by County"</span>,</span>
+<span id="cb30-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Math Score"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 6.41</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-1/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that math score distributions across counties are similar, indicating that geographical region does not really impact the scores of students.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/A2-1/</guid>
+  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+</item>
+<item>
+  <title>Assignment 2-2</title>
+  <link>https://your-website-url.example.com/posts/A2-2/index1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I am examining a dataset reguarding applicant resumes and background in job applications</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#|label: setup</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.1     ✔ tibble    3.3.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(skimr)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggformula)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: scales
+
+Attaching package: 'scales'
+
+The following object is masked from 'package:purrr':
+
+    discard
+
+The following object is masked from 'package:readr':
+
+    col_factor
+
+Loading required package: ggiraph
+Loading required package: ggridges
+
+New to ggformula?  Try the tutorials: 
+    learnr::run_tutorial("introduction", package = "ggformula")
+    learnr::run_tutorial("refining", package = "ggformula")</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcd)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: grid</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcdExtra)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: gnm
+Registered S3 method overwritten by 'vcdExtra':
+  method      from
+  print.Kappa vcd 
+
+Attaching package: 'vcdExtra'
+
+The following object is masked from 'package:vcd':
+
+    woolf_test</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcdExtra)</span>
+<span id="cb9-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(openintro)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: airports
+Loading required package: cherryblossom
+Loading required package: usdata</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(resampledata)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'resampledata'
+
+The following object is masked from 'package:vcdExtra':
+
+    TV
+
+The following object is masked from 'package:datasets':
+
+    Titanic</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggalluvial)</span>
+<span id="cb13-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(RColorBrewer)</span>
+<span id="cb13-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(paletteer)</span></code></pre></div></div>
+</div>
+</section>
+<section id="loading-and-inspecting-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-and-inspecting-the-data">Loading and Inspecting the data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">resume_names <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/ResumeNames.csv"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 4870 Columns: 28
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (25): name, gender, ethnicity, quality, call, city, honors, volunteer, m...
+dbl  (3): rownames, jobs, experience
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(resume_names)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 4,870
+Columns: 28
+$ rownames     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ name         &lt;chr&gt; "Allison", "Kristen", "Lakisha", "Latonya", "Carrie", "Ja…
+$ gender       &lt;chr&gt; "female", "female", "female", "female", "female", "male",…
+$ ethnicity    &lt;chr&gt; "cauc", "cauc", "afam", "afam", "cauc", "cauc", "cauc", "…
+$ quality      &lt;chr&gt; "low", "high", "low", "high", "high", "low", "high", "hig…
+$ call         &lt;chr&gt; "no", "no", "no", "no", "no", "no", "no", "no", "no", "no…
+$ city         &lt;chr&gt; "chicago", "chicago", "chicago", "chicago", "chicago", "c…
+$ jobs         &lt;dbl&gt; 2, 3, 1, 4, 3, 2, 2, 4, 3, 2, 4, 4, 4, 2, 2, 3, 3, 3, 2, …
+$ experience   &lt;dbl&gt; 6, 6, 6, 6, 22, 6, 5, 21, 3, 6, 8, 8, 4, 4, 5, 4, 5, 6, 6…
+$ honors       &lt;chr&gt; "no", "no", "no", "no", "no", "yes", "no", "no", "no", "n…
+$ volunteer    &lt;chr&gt; "no", "yes", "no", "yes", "no", "no", "yes", "yes", "no",…
+$ military     &lt;chr&gt; "no", "yes", "no", "no", "no", "no", "no", "no", "no", "n…
+$ holes        &lt;chr&gt; "yes", "no", "no", "yes", "no", "no", "no", "yes", "no", …
+$ school       &lt;chr&gt; "no", "yes", "yes", "no", "yes", "no", "yes", "no", "no",…
+$ email        &lt;chr&gt; "no", "yes", "no", "yes", "yes", "no", "yes", "yes", "no"…
+$ computer     &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "no", "yes", "yes", "y…
+$ special      &lt;chr&gt; "no", "no", "no", "yes", "no", "yes", "yes", "yes", "yes"…
+$ college      &lt;chr&gt; "yes", "no", "yes", "no", "no", "yes", "yes", "no", "yes"…
+$ minimum      &lt;chr&gt; "5", "5", "5", "5", "some", "none", "none", "some", "none…
+$ equal        &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "…
+$ wanted       &lt;chr&gt; "supervisor", "supervisor", "supervisor", "supervisor", "…
+$ requirements &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "no", "no", "yes", "no…
+$ reqexp       &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "no", "no", "yes", "no…
+$ reqcomm      &lt;chr&gt; "no", "no", "no", "no", "no", "no", "no", "no", "no", "no…
+$ reqeduc      &lt;chr&gt; "no", "no", "no", "no", "no", "no", "no", "no", "no", "no…
+$ reqcomp      &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "no", "no", "yes", "no…
+$ reqorg       &lt;chr&gt; "no", "no", "no", "no", "yes", "no", "no", "yes", "no", "…
+$ industry     &lt;chr&gt; "manufacturing", "manufacturing", "manufacturing", "manuf…</code></pre>
+</div>
+</div>
+</section>
+<section id="data-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
+<p>name: indicating applicant’s first name.</p>
+<p>gender: indicating gender.</p>
+<p>ethnicity: indicating ethnicity (i.e., Caucasian-sounding vs.&nbsp;African-American sounding first name).</p>
+<p>quality: indicating quality of resume.</p>
+<p>call: Was the applicant called back?</p>
+<p>city: indicating city: Boston or Chicago.</p>
+<p>jobs: number of jobs listed on resume.</p>
+<p>experience: number of years of work experience on the resume.</p>
+<p>honors: Did the resume mention some honors?</p>
+<p>volunteer: Did the resume mention some volunteering experience?</p>
+<p>military: Does the applicant have military experience?</p>
+<p>holes: Does the resume have some employment holes?</p>
+<p>school: Does the resume mention some work experience while at school?</p>
+<p>email: Was the e-mail address on the applicant’s resume?</p>
+<p>computer: Does the resume mention some computer skills?</p>
+<p>special: Does the resume mention some special skills?</p>
+<p>college:. Does the applicant have a college degree or more?</p>
+<p>minimum: indicating minimum experience requirement of the employer.</p>
+<p>equal: Is the employer EOE (equal opportunity employment)?</p>
+<p>wanted: indicating type of position wanted by employer.</p>
+<p>requirements: Does the ad mention some requirement for the job?</p>
+<p>reqexp: Does the ad mention some experience requirement?</p>
+<p>reqcomm: Does the ad mention some communication skills requirement?</p>
+<p>reqeduc: Does the ad mention some educational requirement?</p>
+<p>reqcomp: Does the ad mention some computer skills requirement?</p>
+<p>reqorg: Does the ad mention some organizational skills requirement?</p>
+<p>industry: indicating type of employer industry.</p>
+</section>
+<section id="data-munging" class="level2">
+<h2 class="anchored" data-anchor-id="data-munging">Data Munging</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">resume_modified <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> resume_names <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb18-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb18-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(name),</span>
+<span id="cb18-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(gender),</span>
+<span id="cb18-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ethnicity =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(ethnicity),</span>
+<span id="cb18-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quality =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(quality),</span>
+<span id="cb18-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">call =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(call),</span>
+<span id="cb18-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">city =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(city),</span>
+<span id="cb18-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">honors =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(honors),</span>
+<span id="cb18-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">volunteer =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(volunteer),</span>
+<span id="cb18-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">military =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(military),</span>
+<span id="cb18-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">holes =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(holes),</span>
+<span id="cb18-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">school =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(school),</span>
+<span id="cb18-14">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">email =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(email),</span>
+<span id="cb18-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">computer =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(computer),</span>
+<span id="cb18-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">special =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(special),</span>
+<span id="cb18-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">college =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(college),</span>
+<span id="cb18-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minimum =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(minimum),</span>
+<span id="cb18-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">equal =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(equal),</span>
+<span id="cb18-20">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">wanted =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(wanted),</span>
+<span id="cb18-21">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">requirements =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(requirements),</span>
+<span id="cb18-22">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">reqexp =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(reqexp),</span>
+<span id="cb18-23">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">reqcomm =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(reqcomm),</span>
+<span id="cb18-24">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">reqeduc =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(reqeduc),</span>
+<span id="cb18-25">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">reqcomp =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(reqcomp),</span>
+<span id="cb18-26">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">reqorg =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(reqorg),</span>
+<span id="cb18-27">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">industry =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(industry)</span>
+<span id="cb18-28">  )</span>
+<span id="cb18-29"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(resume_modified)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 4,870
+Columns: 28
+$ rownames     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ name         &lt;fct&gt; Allison, Kristen, Lakisha, Latonya, Carrie, Jay, Jill, Ke…
+$ gender       &lt;fct&gt; female, female, female, female, female, male, female, fem…
+$ ethnicity    &lt;fct&gt; cauc, cauc, afam, afam, cauc, cauc, cauc, afam, afam, afa…
+$ quality      &lt;fct&gt; low, high, low, high, high, low, high, high, low, high, h…
+$ call         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, no, no, n…
+$ city         &lt;fct&gt; chicago, chicago, chicago, chicago, chicago, chicago, chi…
+$ jobs         &lt;dbl&gt; 2, 3, 1, 4, 3, 2, 2, 4, 3, 2, 4, 4, 4, 2, 2, 3, 3, 3, 2, …
+$ experience   &lt;dbl&gt; 6, 6, 6, 6, 22, 6, 5, 21, 3, 6, 8, 8, 4, 4, 5, 4, 5, 6, 6…
+$ honors       &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, no, no, no, no, …
+$ volunteer    &lt;fct&gt; no, yes, no, yes, no, no, yes, yes, no, yes, yes, no, no,…
+$ military     &lt;fct&gt; no, yes, no, no, no, no, no, no, no, no, no, no, no, no, …
+$ holes        &lt;fct&gt; yes, no, no, yes, no, no, no, yes, no, no, yes, no, yes, …
+$ school       &lt;fct&gt; no, yes, yes, no, yes, no, yes, no, no, yes, no, yes, no,…
+$ email        &lt;fct&gt; no, yes, no, yes, yes, no, yes, yes, no, yes, yes, yes, n…
+$ computer     &lt;fct&gt; yes, yes, yes, yes, yes, no, yes, yes, yes, no, yes, yes,…
+$ special      &lt;fct&gt; no, no, no, yes, no, yes, yes, yes, yes, yes, yes, no, ye…
+$ college      &lt;fct&gt; yes, no, yes, no, no, yes, yes, no, yes, yes, yes, yes, y…
+$ minimum      &lt;fct&gt; 5, 5, 5, 5, some, none, none, some, none, none, some, som…
+$ equal        &lt;fct&gt; yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, yes, ye…
+$ wanted       &lt;fct&gt; supervisor, supervisor, supervisor, supervisor, secretary…
+$ requirements &lt;fct&gt; yes, yes, yes, yes, yes, no, no, yes, no, no, yes, yes, y…
+$ reqexp       &lt;fct&gt; yes, yes, yes, yes, yes, no, no, yes, no, no, yes, yes, n…
+$ reqcomm      &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, yes, yes,…
+$ reqeduc      &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, no, no, n…
+$ reqcomp      &lt;fct&gt; yes, yes, yes, yes, yes, no, no, yes, no, no, yes, yes, y…
+$ reqorg       &lt;fct&gt; no, no, no, no, yes, no, no, yes, no, no, no, no, yes, ye…
+$ industry     &lt;fct&gt; manufacturing, manufacturing, manufacturing, manufacturin…</code></pre>
+</div>
+</div>
+</section>
+<section id="visualising-impact-of-ethinicity-in-getting-a-callback-for-jobs-despite-quality-of-the-resume" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-impact-of-ethinicity-in-getting-a-callback-for-jobs-despite-quality-of-the-resume">Visualising impact of Ethinicity in getting a Callback for Jobs despite quality of the Resume</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">resume_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_bar</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> ethnicity, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> call, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb20-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> quality) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb20-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Callbacks by Ethnicity despite Quality of Resumes"</span>,</span>
+<span id="cb20-4">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ethnicity"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb20-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_refine</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_paletteer_d</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"basetheme::royal"</span>))</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-2/index1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that in both the low and high quality resumes, caucasian applicants receive more callbacks for jobs than afam applicants. There is a visible increase in number of callbacks with better quality resumes, but the difference between both ethnicities still remains.</p>
+</section>
+<section id="visualising-the-impact-of-additional-skills-in-receiving-callbacks-for-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-the-impact-of-additional-skills-in-receiving-callbacks-for-jobs">Visualising the impact of Additional Skills in receiving Callbacks for Jobs</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">acall_table <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> vcd<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">structable</span>(special <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> call, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> resume_modified)</span>
+<span id="cb21-2">vcd<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mosaic</span>(acall_table, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gp =</span> shading_max, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">main =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Additional Skills impacting Callbacks"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-2/index1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that the applicants with additional skills receive more callbacks than those with none. Therefore stating that applicants have with additional skills have a better chance of getting job placements.</p>
+</section>
+<section id="visualising-experience-levels-impact-on-receiving-callbacks-for-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-experience-levels-impact-on-receiving-callbacks-for-jobs">Visualising Experience levels impact on receiving Callbacks for Jobs</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">resume_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_boxplot</span>(call <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> experience, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> call) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb22-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Experience Levels of Applicants and Callbacks"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb22-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_refine</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_paletteer_d</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"basetheme::royal"</span>))</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-2/index1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that the callbacks are not really dependent on the applicants’ years of experience as applicants who have and have not received callbacks have similar years of experience. The median year of both are also very similar. Although there is a suprising outlier who has not received a callback even with almost 50 years of experience.</p>
+</section>
+<section id="visualising-impact-of-emails-in-getting-callbacks-for-jobs-across-the-various-experience-levels" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-impact-of-emails-in-getting-callbacks-for-jobs-across-the-various-experience-levels">Visualising impact of Emails in getting Callbacks for Jobs across the various Experience levels</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">resume_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> experience, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> email, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb23-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> call) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb23-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Callbacks by Experience and Emails"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb23-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_refine</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_paletteer_d</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"basetheme::minimal"</span>))</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-2/index1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that the applicants who received callbacks and have email are more widespread. In case of applicants who have not received callbacks, the ones who have and have not emailed have similar distributions showing no real difference. This suggests, applicants who email have a better chance of recieving callbacks despite their experience level.</p>
+</section>
+<section id="visualising-applicants-receiving-callbacks-based-on-gender-ethnicity-and-quality-of-resume" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-applicants-receiving-callbacks-based-on-gender-ethnicity-and-quality-of-resume">Visualising applicants receiving Callbacks based on Gender, Ethnicity and Quality of Resume</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">resume_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb24-2">  </span>
+<span id="cb24-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis1 =</span> gender, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis2 =</span> ethnicity, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis3 =</span> quality, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis4 =</span> call)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb24-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_alluvium</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> gender), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb24-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_stratum</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb24-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_label</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stat =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stratum"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">after_stat</span>(stratum))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_discrete</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Gender"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ethnicity"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Resume Quality"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Callback"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb24-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Callbacks based on Gender, Ethnicity and Quality of Resume"</span>) </span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-2/index1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The grapf shows that despite having high resume quality, a large portion of applicants, especially from afam groups end up receiving no callbacks. In terms of gender, more female applicants have received callbacks as compared to male applicants.</p>
+</section>
+<section id="visualising-applicants-receiving-callbacks-based-on-college-additional-skills-and-quality-of-resume" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-applicants-receiving-callbacks-based-on-college-additional-skills-and-quality-of-resume">Visualising applicants receiving Callbacks based on College, Additional Skills and Quality of Resume</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">resume_modified <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb25-2">  </span>
+<span id="cb25-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis1 =</span> college, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis2 =</span> special, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis3 =</span> quality, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis4 =</span> call)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb25-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_alluvium</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> college), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb25-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_stratum</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb25-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_label</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stat =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stratum"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">after_stat</span>(stratum))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_discrete</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"College"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Additional Skills"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Resume Quality"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Callback"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb25-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Resume quality over Etnicity"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in to_lodes_form(data = data, axes = axis_ind, discern =
+params$discern): Some strata appear at multiple axes.
+Warning in to_lodes_form(data = data, axes = axis_ind, discern =
+params$discern): Some strata appear at multiple axes.
+Warning in to_lodes_form(data = data, axes = axis_ind, discern =
+params$discern): Some strata appear at multiple axes.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-2/index1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that many applicants with college education and additional skills have high-quality resumes but still a large number still ends up receiving no callbacks showing that there is no necessary relation between them. Even among applicants who have all three advantages, college, special skills, and high quality resumes, a vast majority does not receive any callbacks, suggesting other factors which are not a show of merit have an impact.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/A2-2/index1.html</guid>
+  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+</item>
+<item>
+  <title>Assignment 2-3</title>
+  <link>https://your-website-url.example.com/posts/A2-3/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I am examining a dataset reguarding surveys relating to Influenza vaccination</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#|label: setup</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.1     ✔ tibble    3.3.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(skimr)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggformula)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: scales
+
+Attaching package: 'scales'
+
+The following object is masked from 'package:purrr':
+
+    discard
+
+The following object is masked from 'package:readr':
+
+    col_factor
+
+Loading required package: ggiraph
+Loading required package: ggridges
+
+New to ggformula?  Try the tutorials: 
+    learnr::run_tutorial("introduction", package = "ggformula")
+    learnr::run_tutorial("refining", package = "ggformula")</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcd)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: grid</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcdExtra)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: gnm
+Registered S3 method overwritten by 'vcdExtra':
+  method      from
+  print.Kappa vcd 
+
+Attaching package: 'vcdExtra'
+
+The following object is masked from 'package:vcd':
+
+    woolf_test</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(vcdExtra)</span>
+<span id="cb9-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(openintro)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: airports
+Loading required package: cherryblossom
+Loading required package: usdata</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(resampledata)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'resampledata'
+
+The following object is masked from 'package:vcdExtra':
+
+    TV
+
+The following object is masked from 'package:datasets':
+
+    Titanic</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggalluvial)</span>
+<span id="cb13-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(RColorBrewer)</span>
+<span id="cb13-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(paletteer)</span></code></pre></div></div>
+</div>
+</section>
+<section id="loading-and-inspecting-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-and-inspecting-the-data">Loading and Inspecting the data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">vaccinations</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       survey freq subject  response start_date   end_date
+1   ms153_NSA   48       1    Always 2010-09-22 2010-10-25
+2   ms153_NSA    9       2    Always 2010-09-22 2010-10-25
+3   ms153_NSA   66       3    Always 2010-09-22 2010-10-25
+4   ms153_NSA    1       4    Always 2010-09-22 2010-10-25
+5   ms153_NSA   11       5    Always 2010-09-22 2010-10-25
+6   ms153_NSA    1       6    Always 2010-09-22 2010-10-25
+7   ms153_NSA    5       7    Always 2010-09-22 2010-10-25
+8   ms153_NSA    4       8    Always 2010-09-22 2010-10-25
+9   ms153_NSA   24       9   Missing 2010-09-22 2010-10-25
+10  ms153_NSA    4      10   Missing 2010-09-22 2010-10-25
+11  ms153_NSA   29      11   Missing 2010-09-22 2010-10-25
+12  ms153_NSA    1      12   Missing 2010-09-22 2010-10-25
+13  ms153_NSA    1      13   Missing 2010-09-22 2010-10-25
+14  ms153_NSA    9      14   Missing 2010-09-22 2010-10-25
+15  ms153_NSA   10      15   Missing 2010-09-22 2010-10-25
+16  ms153_NSA   14      16   Missing 2010-09-22 2010-10-25
+17  ms153_NSA    3      17     Never 2010-09-22 2010-10-25
+18  ms153_NSA    7      18     Never 2010-09-22 2010-10-25
+19  ms153_NSA   42      19     Never 2010-09-22 2010-10-25
+20  ms153_NSA   20      20     Never 2010-09-22 2010-10-25
+21  ms153_NSA    2      21     Never 2010-09-22 2010-10-25
+22  ms153_NSA   36      22     Never 2010-09-22 2010-10-25
+23  ms153_NSA    7      23     Never 2010-09-22 2010-10-25
+24  ms153_NSA    2      24     Never 2010-09-22 2010-10-25
+25  ms153_NSA    4      25     Never 2010-09-22 2010-10-25
+26  ms153_NSA    9      26     Never 2010-09-22 2010-10-25
+27  ms153_NSA   48      27 Sometimes 2010-09-22 2010-10-25
+28  ms153_NSA   11      28 Sometimes 2010-09-22 2010-10-25
+29  ms153_NSA   99      29 Sometimes 2010-09-22 2010-10-25
+30  ms153_NSA    3      30 Sometimes 2010-09-22 2010-10-25
+31  ms153_NSA   41      31 Sometimes 2010-09-22 2010-10-25
+32  ms153_NSA  168      32 Sometimes 2010-09-22 2010-10-25
+33  ms153_NSA    2      33 Sometimes 2010-09-22 2010-10-25
+34  ms153_NSA   23      34 Sometimes 2010-09-22 2010-10-25
+35  ms153_NSA   22      35 Sometimes 2010-09-22 2010-10-25
+36  ms153_NSA   38      36 Sometimes 2010-09-22 2010-10-25
+37  ms153_NSA    1      37 Sometimes 2010-09-22 2010-10-25
+38  ms153_NSA   15      38 Sometimes 2010-09-22 2010-10-25
+39  ms153_NSA  113      39 Sometimes 2010-09-22 2010-10-25
+40  ms432_NSA   48       1    Always 2015-06-04 2015-10-05
+41  ms432_NSA    9       2    Always 2015-06-04 2015-10-05
+42  ms432_NSA   66       3   Missing 2015-06-04 2015-10-05
+43  ms432_NSA    1       4   Missing 2015-06-04 2015-10-05
+44  ms432_NSA   11       5   Missing 2015-06-04 2015-10-05
+45  ms432_NSA    1       6     Never 2015-06-04 2015-10-05
+46  ms432_NSA    5       7 Sometimes 2015-06-04 2015-10-05
+47  ms432_NSA    4       8 Sometimes 2015-06-04 2015-10-05
+48  ms432_NSA   24       9    Always 2015-06-04 2015-10-05
+49  ms432_NSA    4      10    Always 2015-06-04 2015-10-05
+50  ms432_NSA   29      11   Missing 2015-06-04 2015-10-05
+51  ms432_NSA    1      12   Missing 2015-06-04 2015-10-05
+52  ms432_NSA    1      13   Missing 2015-06-04 2015-10-05
+53  ms432_NSA    9      14   Missing 2015-06-04 2015-10-05
+54  ms432_NSA   10      15 Sometimes 2015-06-04 2015-10-05
+55  ms432_NSA   14      16 Sometimes 2015-06-04 2015-10-05
+56  ms432_NSA    3      17    Always 2015-06-04 2015-10-05
+57  ms432_NSA    7      18   Missing 2015-06-04 2015-10-05
+58  ms432_NSA   42      19   Missing 2015-06-04 2015-10-05
+59  ms432_NSA   20      20   Missing 2015-06-04 2015-10-05
+60  ms432_NSA    2      21     Never 2015-06-04 2015-10-05
+61  ms432_NSA   36      22     Never 2015-06-04 2015-10-05
+62  ms432_NSA    7      23     Never 2015-06-04 2015-10-05
+63  ms432_NSA    2      24 Sometimes 2015-06-04 2015-10-05
+64  ms432_NSA    4      25 Sometimes 2015-06-04 2015-10-05
+65  ms432_NSA    9      26 Sometimes 2015-06-04 2015-10-05
+66  ms432_NSA   48      27    Always 2015-06-04 2015-10-05
+67  ms432_NSA   11      28    Always 2015-06-04 2015-10-05
+68  ms432_NSA   99      29   Missing 2015-06-04 2015-10-05
+69  ms432_NSA    3      30   Missing 2015-06-04 2015-10-05
+70  ms432_NSA   41      31   Missing 2015-06-04 2015-10-05
+71  ms432_NSA  168      32   Missing 2015-06-04 2015-10-05
+72  ms432_NSA    2      33     Never 2015-06-04 2015-10-05
+73  ms432_NSA   23      34     Never 2015-06-04 2015-10-05
+74  ms432_NSA   22      35     Never 2015-06-04 2015-10-05
+75  ms432_NSA   38      36 Sometimes 2015-06-04 2015-10-05
+76  ms432_NSA    1      37 Sometimes 2015-06-04 2015-10-05
+77  ms432_NSA   15      38 Sometimes 2015-06-04 2015-10-05
+78  ms432_NSA  113      39 Sometimes 2015-06-04 2015-10-05
+79  ms460_NSA   48       1    Always 2016-09-27 2016-10-25
+80  ms460_NSA    9       2 Sometimes 2016-09-27 2016-10-25
+81  ms460_NSA   66       3    Always 2016-09-27 2016-10-25
+82  ms460_NSA    1       4     Never 2016-09-27 2016-10-25
+83  ms460_NSA   11       5 Sometimes 2016-09-27 2016-10-25
+84  ms460_NSA    1       6    Always 2016-09-27 2016-10-25
+85  ms460_NSA    5       7    Always 2016-09-27 2016-10-25
+86  ms460_NSA    4       8 Sometimes 2016-09-27 2016-10-25
+87  ms460_NSA   24       9    Always 2016-09-27 2016-10-25
+88  ms460_NSA    4      10 Sometimes 2016-09-27 2016-10-25
+89  ms460_NSA   29      11    Always 2016-09-27 2016-10-25
+90  ms460_NSA    1      12   Missing 2016-09-27 2016-10-25
+91  ms460_NSA    1      13     Never 2016-09-27 2016-10-25
+92  ms460_NSA    9      14 Sometimes 2016-09-27 2016-10-25
+93  ms460_NSA   10      15    Always 2016-09-27 2016-10-25
+94  ms460_NSA   14      16 Sometimes 2016-09-27 2016-10-25
+95  ms460_NSA    3      17    Always 2016-09-27 2016-10-25
+96  ms460_NSA    7      18    Always 2016-09-27 2016-10-25
+97  ms460_NSA   42      19     Never 2016-09-27 2016-10-25
+98  ms460_NSA   20      20 Sometimes 2016-09-27 2016-10-25
+99  ms460_NSA    2      21   Missing 2016-09-27 2016-10-25
+100 ms460_NSA   36      22     Never 2016-09-27 2016-10-25
+101 ms460_NSA    7      23 Sometimes 2016-09-27 2016-10-25
+102 ms460_NSA    2      24    Always 2016-09-27 2016-10-25
+103 ms460_NSA    4      25     Never 2016-09-27 2016-10-25
+104 ms460_NSA    9      26 Sometimes 2016-09-27 2016-10-25
+105 ms460_NSA   48      27    Always 2016-09-27 2016-10-25
+106 ms460_NSA   11      28 Sometimes 2016-09-27 2016-10-25
+107 ms460_NSA   99      29    Always 2016-09-27 2016-10-25
+108 ms460_NSA    3      30   Missing 2016-09-27 2016-10-25
+109 ms460_NSA   41      31     Never 2016-09-27 2016-10-25
+110 ms460_NSA  168      32 Sometimes 2016-09-27 2016-10-25
+111 ms460_NSA    2      33    Always 2016-09-27 2016-10-25
+112 ms460_NSA   23      34     Never 2016-09-27 2016-10-25
+113 ms460_NSA   22      35 Sometimes 2016-09-27 2016-10-25
+114 ms460_NSA   38      36    Always 2016-09-27 2016-10-25
+115 ms460_NSA    1      37   Missing 2016-09-27 2016-10-25
+116 ms460_NSA   15      38     Never 2016-09-27 2016-10-25
+117 ms460_NSA  113      39 Sometimes 2016-09-27 2016-10-25</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(vaccinations)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 117
+Columns: 6
+$ survey     &lt;fct&gt; ms153_NSA, ms153_NSA, ms153_NSA, ms153_NSA, ms153_NSA, ms15…
+$ freq       &lt;int&gt; 48, 9, 66, 1, 11, 1, 5, 4, 24, 4, 29, 1, 1, 9, 10, 14, 3, 7…
+$ subject    &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …
+$ response   &lt;fct&gt; Always, Always, Always, Always, Always, Always, Always, Alw…
+$ start_date &lt;date&gt; 2010-09-22, 2010-09-22, 2010-09-22, 2010-09-22, 2010-09-22…
+$ end_date   &lt;date&gt; 2010-10-25, 2010-10-25, 2010-10-25, 2010-10-25, 2010-10-25…</code></pre>
+</div>
+</div>
+</section>
+<section id="data-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
+<p>freq: number of respondents represented in each row</p>
+<p>subject: identifier linking respondents across surveys</p>
+<p>survey: survey designation from the ALP website</p>
+<p>start_date: start date of survey</p>
+<p>end_date: end date of survey</p>
+<p>response: discretized probability of vaccinating for influenza</p>
+<p>##Summarising the Data</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">skim</span>(vaccinations)</span></code></pre></div></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">vaccinations</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">117</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: Date</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">min</th>
+<th style="text-align: left;">max</th>
+<th style="text-align: left;">median</th>
+<th style="text-align: right;">n_unique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">start_date</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2010-09-22</td>
+<td style="text-align: left;">2016-09-27</td>
+<td style="text-align: left;">2015-06-04</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">end_date</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2010-10-25</td>
+<td style="text-align: left;">2016-10-25</td>
+<td style="text-align: left;">2015-10-05</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 15%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">survey</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">ms1: 39, ms4: 39, ms4: 39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">response</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Som: 37, Alw: 29, Mis: 26, Nev: 25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 3%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">freq</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">24.44</td>
+<td style="text-align: right;">34.75</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">168</td>
+<td style="text-align: left;">▇▂▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">subject</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">20.00</td>
+<td style="text-align: right;">11.30</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: left;">▇▇▇▇▇</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="visualising-the-frequency-of-responses-about-peoples-influenza-vaccination-intent" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-the-frequency-of-responses-about-peoples-influenza-vaccination-intent">Visualising the Frequency of Responses about people’s Influenza Vaccination intent</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">vaccinations <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_boxplot</span>(response <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> freq, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>response, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Frequency of Responses for Vaccination"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb19-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_refine</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_paletteer_d</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">"dutchmasters::pearl_earring"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>))</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-3/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that most people have opted for “Always” indicating that there is strong willingness to get vaccinated. There are quite a few people who have opted for “Sometimes” that many people are uncertain about vaccination. “Never” responses are mostly low in frequency, suggesting complete rejection of vaccination is less prevalent among people across surveys. There are also a few people who have not chosen anything suggesting indecisiveness among some, who are not sure of what they would opt for.</p>
+</section>
+<section id="visualising-peoples-influenza-vaccination-intent-across-surveys" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-peoples-influenza-vaccination-intent-across-surveys">Visualising people’s Influenza Vaccination intent across Surveys</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">vaccinations <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_col</span>(freq <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> survey, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>response) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb20-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_refine</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_paletteer_d</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">"dutchmasters::pearl_earring"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>))</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-3/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The frequency of vaccination intent differs visiby by survey, suggesting that different survey context get different responses. “Sometimes” and “Missing” responses are quite noticeable, suggesting many people do not have enough information about influenza vaccination.</p>
+</section>
+<section id="visualising-peoples-vaccination-intent-through-subjects" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-peoples-vaccination-intent-through-subjects">Visualising people’s Vaccination intent through subjects</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">vaccinations <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb21-2">  </span>
+<span id="cb21-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis1 =</span> subject, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis2 =</span> survey, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis3 =</span> response)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb21-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_alluvium</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> subject), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb21-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_stratum</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb21-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_label</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stat =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stratum"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">after_stat</span>(stratum))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_discrete</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Subject"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Survey"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Response"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Resume quality over Etnicity"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A2-3/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The graph shows that the same subjects appear across multiple surveys, showing how different respondents contribute to multiple different vaccination surveys. Flows from surveys to responses are spread across all intents, indicating no single survey has one same response for all.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/A2-3/</guid>
+  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+</item>
+<item>
+  <title>Fifth</title>
+  <link>https://your-website-url.example.com/posts/Fifth/index1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#|label: setup</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.1     ✔ tibble    3.3.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(skimr)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggformula)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: scales
+
+Attaching package: 'scales'
+
+The following object is masked from 'package:purrr':
+
+    discard
+
+The following object is masked from 'package:readr':
+
+    col_factor
+
+Loading required package: ggiraph
+Loading required package: ggridges
+
+New to ggformula?  Try the tutorials: 
+    learnr::run_tutorial("introduction", package = "ggformula")
+    learnr::run_tutorial("refining", package = "ggformula")</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 8
+$ species     &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Ad…
+$ island      &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Tor…
+$ bill_len    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, 42.0, …
+$ bill_dep    &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, 20.2, …
+$ flipper_len &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186, 180,…
+$ body_mass   &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 4250, …
+$ sex         &lt;fct&gt; male, female, female, NA, female, male, female, male, NA, …
+$ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
+</div>
+<p>##Qual charts</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_bar</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> species)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_bar</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> species, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>species, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_bar</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> species, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> island, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>##quant variables</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> body_mass)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
+(`stat_density()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> body_mass, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> species )</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
+(`stat_density()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> body_mass) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> island)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
+(`stat_density()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_density_ridges</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> body_mass, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> species, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 153</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
+(`stat_density_ridges()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/Fifth/index1.html</guid>
+  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
 </item>
 </channel>
 </rss>
