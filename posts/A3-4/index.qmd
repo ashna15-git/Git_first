@@ -1,0 +1,150 @@
+---
+title: "Assignment 3-4"
+---
+
+## Introduction
+
+I am going to create network visualisations of The Famous Zachary Karate Club dataset
+
+## Setup
+
+```{r}
+#| label: Setup
+#| message: false
+#| code-fold: true
+#| code-summary: "Show me the Code"
+
+library(tidyverse)
+library(igraph) 
+library(tidygraph) 
+library(ggraph) 
+library(graphlayouts) 
+
+library(tinytable)
+```
+
+## Reading The Famous Zachary Club dataset
+
+```{r}
+data("karate",package= "igraphdata")
+karate
+```
+
+## Inspecting The Famous Zachary Karate Club dataset
+
+```{r}
+glimpse(karate)
+```
+
+## Data Dictionary
+
+name:
+Identifier for each actor in the club
+
+label: 
+Short label used for plotting	
+
+Faction:
+Faction membership of the actor after the club split	
+
+color:
+Visual for faction membership	
+
+weight:
+Number of shared activities between two members
+
+## Converting the igraph object to tidygraph object
+
+```{r}
+karate_tbl <- as_tbl_graph(karate) 
+
+karate_tbl
+```
+
+## Social Connections within the members of The Famous Zachary Karate Club
+
+```{r}
+karate_tbl %>% 
+  
+  activate(nodes) %>% 
+  mutate(degree = centrality_degree()) %>% 
+  
+  ggraph(layout = "fr")+
+  geom_node_point(aes(fill = as.factor(Faction), size = degree), shape = 25)+
+  geom_node_text(aes(label = name), size = 4, repel = T)+
+  geom_edge_link0()+
+  scale_fill_brewer(palette = "Dark2")
+```
+Comments
+
+This network shows how the members of a university's karate club are connected through the various shared activities. It shows clear club division (through colour) between two groups (Factions). Only a few people have connections across the faction who keep the club connected, the rest have connections only within their faction. Mr Hi and John A are at the centers of the two factions (leaders in their respective faction) and have the most connections , implying they have the most influence. Mr Hi and John A are both connected to each and everyone in their specific faction implying they are key figures and have the strongest influence in their respective factions.
+
+## Strength of social Connections within the members of The Famous Zachary Karate Club
+
+```{r}
+karate_tbl %>% 
+  
+  ggraph(layout = "fr")+
+  geom_edge_link0(aes(linewidth = weight, colour = weight))+
+  geom_node_point(aes(fill = as.factor(Faction)), size = 4, shape = 25)+
+  geom_node_text(aes(label = name), size = 4, repel = T)+
+  scale_fill_brewer(palette = "Dark2")+
+  
+  theme(legend.text  = element_text(size = 5),
+        legend.title = element_text(size = 6),
+        legend.key.size = unit(0.4, "cm"),
+        legend.position ="bottom")
+```
+Comments
+
+The strongest connections (thick and lighter blue) are mostly present between people within the same faction, implying those people have more shared activities with people from their specific faction. Mr Hi and John A have the strongest connections within their factions, implying they have had a lot of interactions as they are leaders of the factions. Faction 2 (coloured in orange) show stronger connections withim them as compared to faction 1 (coloured in green), implying faction 2 had a tighter relationship aming the members.
+
+## Most Influential people within the members of The Famous Zachary Karate Club
+
+```{r}
+karate_tbl %>% 
+  
+  activate(nodes) %>% 
+  mutate(degree = centrality_degree()) %>% 
+  
+  ggraph(layout = "linear", circular = TRUE) +
+  geom_edge_link0() +
+  geom_node_point(aes(size = degree, fill = as.factor(Faction)), shape = 25) +
+  geom_node_text(aes(label = name), size = 4, repel = T)+
+  scale_fill_brewer(palette = "Dark2")
+```
+Comments
+
+Mr Hi and John A are the most connected members and hold the most influence based on the web of connections they have. Most of the lines that connect to Mr Hi and John A are from members of their respective factions, suggesting strong dependence of the factions on their leaders. Actor 13 has a sole connection, only to his faction leader implying they have the weakest influence with the least number of connections. There are also a few other members who have only 2-3 connections (one of them being to the leader), also implying they have less influence.
+
+## Connections within The Famous Zachary Karate Club that it depends on
+
+```{r}
+karate_tbl %>% 
+  
+  activate(edges) %>% 
+  mutate(between = centrality_edge_betweenness()) %>% 
+  
+  ggraph(layout = "kk")+
+  geom_edge_link0(aes(linewidth = between), colour = "lightblue")+
+  geom_node_point(aes(fill = as.factor(Faction)), size =3, shape = 25)+
+  geom_node_text(aes(label = name), size = 4, repel = T)+
+  scale_fill_brewer(palette = "Dark2")
+```
+Comments
+
+Only a few connections are very important based on the betweeness between the members (shown by the thicker lines), suggesting that the members depend on these connections to stay connected. Most of the thick lines (showing strong betweeness) surround Mr Hi and John A as they are leaders and shows that most connections pass through them. Some members may not have connections with strong betweeness (thick lines) but removing them would very much affect the club. Like in the case of Actor 31, they do not have connections with particularly strong betweeness but removing them would affect the club as they connect a few members of the club who further connect to other members.
+
+## Leaders of the factions of The Famous Zachary Karate Club
+
+```{r}
+karate %>%
+  ggraph(layout = "focus", focus = 1) +
+  geom_edge_link0(aes(linewidth = weight), colour = "lightblue")+
+  geom_node_point(aes(fill = as.factor(Faction)), size = 4, shape = 25)+
+  geom_node_text(aes(label = name), size = 4, repel = T)+
+  scale_fill_brewer(palette = "Dark2")
+```
+Comments
+
+Through this network visualisations, one can clearly see the Mr Hi and John A have the most important connections as they sit at the centre of their respective faction and the "focus" is on them. Removing either of them would largely affect the club as most of the connections largely depend on them. They also have some connections across the faction which acts as a strong link between them.

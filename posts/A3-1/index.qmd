@@ -1,0 +1,216 @@
+---
+title: "Assignment 3-1"
+---
+
+## Introduction
+
+I am going to draw a map of a section my hometown, Pune and plot the different restaurants in that specific area along with their cuisines.
+
+## Setup
+
+```{r}
+#| label: Setup
+#| message: false
+#| code-fold: true
+#| code-summary: "Show me the Code"
+
+library(tidyverse)
+library(ggformula)
+library(sf)
+library(sfheaders) 
+library(osmdata)
+```
+
+## Getting the geographical data for a section of Pune
+
+```{r}
+## 73.849889,18.498119,73.899813,18.544562
+
+bbox_pune <- matrix(c(73.849889,18.498119,73.899813,18.544562),
+                 byrow = FALSE, 
+                 nrow = 2,
+                 ncol = 2, 
+                 dimnames = list(c("x", "y"), c("min", "max")))
+bbox_pune
+```
+
+Comments
+
+These points are the minimum and maximum longitudes and latitudes of one section of Pune on which the restaurants are going to be plotted.
+
+## Getting all the buildings data in that specific area of Pune
+
+```{r}
+#| label: download-buildings
+#| eval: false
+
+data_buildings <-
+  osmdata::opq(bbox = bbox_pune) %>% 
+  osmdata::add_osm_feature(key = "building") %>% 
+  osmdata_sf() %>% 
+  purrr::pluck("osm_polygons") 
+```
+
+## Getting all the roads data in that specific area of Pune
+
+```{r}
+#| label: download-roads
+#| eval: false
+
+data_roads <-
+  osmdata::opq(bbox = bbox_pune) %>% 
+  osmdata::add_osm_feature(key = "highway") %>% 
+  osmdata_sf() %>% 
+  purrr::pluck("osm_lines") 
+```
+
+## Getting all the rivers data in that specific area of Pune
+
+```{r}
+#| label: download-rivers
+#| eval: false
+
+data_natural_river <-
+  osmdata::opq(bbox = bbox_pune) %>% 
+  osmdata::add_osm_feature(key = "natural", value = "water") %>% 
+  osmdata_sf() %>% 
+  purrr::pluck("osm_polygons") 
+```
+
+## Getting all the tree areas data in that specific area of Pune
+
+```{r}
+#| label: download-wood
+#| eval: false
+
+data_natural_wood <-
+  osmdata::opq(bbox = bbox_pune) %>% 
+  osmdata::add_osm_feature(key = "natural", value = "wood") %>% 
+  osmdata_sf() %>% 
+  purrr::pluck("osm_polygons") 
+```
+
+## Getting all the restaurants data in that specific area of Pune
+
+```{r}
+#| label: download-restaurants
+#| eval: false
+
+data_res <-
+  osmdata::opq(bbox = bbox_pune) %>% 
+  osmdata::add_osm_feature(key = "amenity", value = "restaurant") %>% 
+  osmdata_sf() %>% 
+  purrr::pluck("osm_points") 
+```
+
+Comments
+
+These are to obtain all the natural and man-made features that are going to be plotted on the map using OSM data.
+
+## Saving the buildings data locally
+
+```{r}
+#| eval: false
+
+sf::st_write(data_buildings,
+             dsn = "../Data/gpkg-Data/building_p.gpkg",
+             append = F,
+             quiet = F)
+```
+
+## Saving the roads data locally
+
+```{r}
+#| eval: false
+
+sf::st_write(data_roads,
+             dsn = "../Data/gpkg-Data/roads_p.gpkg",
+             append = F,
+             quiet = F)
+```
+
+## Saving the rivers data locally
+
+```{r}
+#| eval: false
+
+sf::st_write(data_natural_river,
+             dsn = "../Data/gpkg-Data/rivers.gpkg",
+             append = F,
+             quiet = F)
+```
+
+## Saving the tree areas data locally
+
+```{r}
+#| eval: false
+
+sf::st_write(data_natural_wood,
+             dsn = "../Data/gpkg-Data/wood.gpkg",
+             append = F,
+             quiet = F)
+```
+
+## Saving the restaurants data locally
+
+```{r}
+#| eval: false
+
+sf::st_write(data_res,
+             dsn = "../Data/gpkg-Data/restaurants.gpkg",
+             append = F,
+             quiet = F)
+```
+
+Comments
+
+These are to save the data that we "plucked" using OSM data in order to obtain it for future use and reference.
+
+## Reading the saved buildings, roads, rivers, green areas and restaurants data in that specific area of Pune
+
+```{r}
+buildings_pune <- sf::st_read("../Data/gpkg-Data/building_p.gpkg")
+roads_pune <- sf::st_read("../Data/gpkg-Data/roads_p.gpkg")
+rivers_p <- sf::st_read("../Data/gpkg-Data/rivers.gpkg")
+wood <- sf::st_read("../Data/gpkg-Data/wood.gpkg")
+restaurants_p <- sf::st_read("../Data/gpkg-Data/restaurants.gpkg")
+```
+
+## Inspecting the buildings, roads, rivers, green areas and restaurants data
+
+```{r}
+glimpse(buildings_pune)
+glimpse(roads_pune)
+glimpse(rivers_p)
+glimpse(wood)
+glimpse(restaurants_p)
+```
+
+## Making the Map of the specific section of Pune and Plotting the restaurants within that along with their cuisines
+
+```{r}
+gf_sf(data = buildings_pune, geometry = ~ geom, colour = "grey", fill = "grey") %>% 
+  
+  gf_sf(data = roads_pune, geometry = ~ geom, color = "gold", fill = "gold") %>% 
+  
+  gf_sf(data = rivers_p, geometry = ~ geom, color = "lightblue", fill = "lightblue") %>% 
+  
+  gf_sf(data = wood, geometry = ~ geom, color = "lightgreen", fill = "lightgreen") %>% 
+  
+  gf_sf(data = restaurants_p, geometry = ~ geom, color = ~cuisine, fill = ~cuisine) %>% 
+  
+  gf_labs(title = "Mapping Restaurants and their Cuisines in a section of Pune") %>% 
+  
+  gf_theme(theme = theme_minimal()) %>% 
+  
+  gf_theme(
+     legend.text  = element_text(size = 5),
+    legend.title = element_text(size = 6),
+    legend.key.size = unit(0.004, "cm"),
+    legend.position ="bottom" 
+  )
+```
+
+Comments
+
+The grey areas are buildings, green areas are tree covered regions, yellow lines are roads, blue lines indicate rivers and the coloured or grey points are restaurants. There are quite a few restaurants clustered at the centre (18.52N, 73.87E), top right (between 18.53N, 73.90E and 18.54N, 73.90E) and towards the bottom left (18.51N, 73.85E) of the map. This suggests that those might be busy areas, maybe even commercial or at least where there is quite some activity of people. There is a wide variety of cuisines identified showing that Pune's food is diverse. Apart from Indian food, there seems to be a strong liking for Chinese among the people based on the number of restaurants serving Chinese. Italian food also seems to be popular, along with Thai and Asian. There are also a presence of American food. There are only a few restaurants along the river and around the tree areas, suggesting there might be only a few to no people living there. The restaurants are closer to the roads and buildings, that is, they are placed mostly near urban areas.

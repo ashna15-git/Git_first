@@ -1,0 +1,202 @@
+---
+title: "Assignment 3-3"
+---
+
+## Introduction
+
+I am going to examine data reguarding airlines connectivity and make a few network visualisations
+
+## Setup
+
+```{r}
+#| label: Setup
+#| message: false
+#| code-fold: true
+#| code-summary: "Show me the Code"
+
+library(tidyverse)
+library(igraph) 
+library(tidygraph) 
+library(ggraph) 
+library(graphlayouts) 
+
+library(tinytable)
+```
+
+## Reading the Airlines Network dataset
+
+```{r}
+a_nodes <- read_csv("../Data/airlines_nodes.csv")
+a_edges <- read_csv("../Data/airlines_edges.csv")
+```
+
+## Inspecting the Airlines Network dataset
+
+```{r}
+glimpse(a_nodes)
+glimpse(a_edges)
+```
+
+## Data Dictionary
+
+Id:
+Identifier for each airport
+
+Label:
+Name of the airport
+
+Code:
+Airport code
+
+City:
+City where the airport is located
+
+latitude:
+Latitude of the airport
+
+longitude:
+Longitude of the airport
+
+ToFly:
+Status indicator
+
+Visits:
+Measure of people's activity in airports
+
+Source:
+Origin airport ID
+
+Target:
+Destination airport ID
+
+Type:
+Route type
+
+Weight:
+Frequency of flights
+
+## Data Munging of the dataset
+
+```{r}
+air_nodes <- a_nodes %>% 
+  mutate(
+    across(where(is.character), as.factor)
+  ) %>% 
+  mutate(
+    ToFly = as.factor(ToFly)
+  )
+
+air_edges <- a_edges %>% 
+  mutate(
+    Source = as.factor(Source),
+    Target = as.factor(Target),
+    Type = as.factor(Type)
+  )
+```
+
+## Making a Graph Object for the Airlines Network dataset
+
+```{r}
+air_graph <- tidygraph::tbl_graph(nodes = air_nodes,
+                                 edges = air_edges,
+                                 directed = TRUE)
+air_graph
+```
+Comments
+
+This is done to structure the raw Airlines Network dataset to a structured dataset for the network visualisations
+
+## Major Airports and connected Smaller Ariports
+
+```{r}
+air_graph %>% 
+  
+  activate(nodes) %>% 
+  mutate(degree = centrality_degree()) %>%
+  
+  ggraph(layout = "fr") +
+  geom_edge_link0(alpha = 0.15)+
+  geom_node_point(aes(fill = ToFly, size = degree), shape = 21)+
+  scale_fill_brewer(palette = "Pastel1") 
+```
+Comments
+
+The few airports, that is the points in the middle, are very important since they have a lot of connections (degree of nodes). This suggests that the airline system depend on them. The smaller points are the small airports with only a few to very few connections and they are dependent on the major airports in the middle.
+
+## Important Flight Routes between the Airports
+
+```{r}
+air_graph %>% 
+  
+  activate(edges) %>% 
+  mutate(between = centrality_edge_betweenness()) %>% 
+  
+  activate(nodes) %>% 
+  mutate(degree = centrality_degree()) %>% 
+  
+  ggraph(layout = "fr") +
+  geom_edge_link0(aes(linewidth = between, colour = between)) +
+  geom_node_point(aes(size = degree),colour = "black", fill = "pink", shape = 21) +
+  
+  theme(legend.text  = element_text(size = 5),
+        legend.title = element_text(size = 6),
+        legend.key.size = unit(0.4, "cm"),
+        legend.position ="bottom")
+```
+Comments
+
+Only a few routes are very important since only a few routes are represented by thick and lighter blue lines. The other routes are not very important as they are represented by thin and darker blue lines. This means only a small number of routes are used over and over again to connect to different airports in the network. The routes which have high betweeness between them, that is the thicker, lighter blue routes, connect airports to each other, making them extremely important. If any one of these airports are affected, it would in turn affect a lot of dependent airports. 
+
+## Busy Airports and their Connections
+
+```{r}
+air_graph %>% 
+  
+   activate(nodes) %>% 
+  mutate(degree = centrality_degree()) %>%
+  
+  ggraph(layout = "kk") +
+  geom_edge_link0(alpha = 0.15) +
+  geom_node_point(aes(fill = Visits, size = degree), shape = 21) +
+  scale_fill_viridis_c()
+```
+Comments
+
+The most visited airports are scattered all across, the bigger and smaller points (airports) both are visited a lot. This implies that the number of connections of the airports (size of points) does not affect the activity of people in that airport. There are some major airports which are less visited than the smaller airports suggesting that the number of flights do not depend on the number of connections.
+
+## Flight routes and their types 
+
+```{r}
+air_graph %>%
+  
+   activate(edges) %>% 
+  mutate(between = centrality_edge_betweenness()) %>% 
+  
+  ggraph(layout = "kk") +
+  geom_edge_link0(aes(linewidth = Type, colour = between)) +
+  geom_node_point(size = 3, colour = "black", fill = "pink", shape = 21)
+```
+Comments
+
+This network shows that all flight routes are undirected. It implies that the if the airports have connections between them, it has both to and fro flights between them.
+
+## Airports and their flight frequency
+
+```{r}
+air_graph %>% 
+  
+  activate(nodes) %>% 
+  mutate(degree = centrality_degree()) %>% 
+  
+  ggraph(layout = "linear", circular = TRUE) +
+  geom_edge_link0(aes(edge_colour =  Weight)) +
+  geom_node_point(aes(colour = degree), size = 4) +
+  scale_edge_color_distiller(palette = "YlOrRd") +
+  scale_colour_viridis_c()
+```
+Comments
+This shows how frequent the flights are between the airports. Most flights' frequency is below 250. Only a select few flights have more than 250 in terms of frequency which are represented in a lighter red colour. Also shows how it's not necessary for only major airports to have more flight frequency. Some of the smaller airports (points coloured in blues and purples) have more flight frequency than the major airports (points coloured in yellows and greens).
+
+
+
+

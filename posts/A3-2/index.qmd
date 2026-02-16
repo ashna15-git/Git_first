@@ -1,0 +1,114 @@
+---
+title: "Assignment 3-2"
+---
+
+## Introduction
+
+I am going track the Seasonal Migration of the Bar Headed Geese (Anser indicus) from Kyrgyzstan
+
+## Setup
+
+```{r}
+#| label: Setup
+#| message: false
+#| code-fold: true
+#| code-summary: "Show me the Code"
+
+library(tidyverse)
+library(ggformula)
+library(sf)
+library(sfheaders) 
+library(osmdata)
+library(tmap)
+```
+
+
+## Getting the World Map Data
+
+```{r}
+data("World")
+head(World)
+```
+
+## Reading the Bar Headed Geese migration data that is their locations and tracks
+
+```{r}
+bird_points <- sf::st_read("../Data/points.shp")
+bird_tracks <- sf::st_read("../Data/lines.shp")
+```
+
+## Plotting the World Map and the migration data of the Bar Headed Geese
+
+```{r}
+gf_sf(
+  data = World, colour = "grey", fill = "lightgrey"
+) %>%
+  
+  gf_sf( 
+    data = bird_tracks, geometry = ~geometry, colour = "blue"
+  ) %>%
+  
+  gf_sf(
+    data = bird_points, geometry = ~geometry, colour = "red", size = 0.3
+  ) %>%
+  
+  gf_theme(theme = theme_minimal()) %>%
+  
+  gf_labs(
+    title = "Migration Routes of the Bar-headed Goose (Anser indicus)"
+  )
+
+```
+Comments
+
+This map shows the migration routes of the Bar Headed Geese in Kyrgyzstan. It shows that the migration is limited to Central and South Asia. There is no cross continent movement, but there is cross country movement southward from Kyrgyzstan to Afghanistan, Pakistan, India and China among the few. The map shows mostly southward movement of the birds. This might imply that the migration is due to colder months in Krygyzstan, because as you move southward in Asia, those regions comparitively have warmer climates. Although there is one instance where the movement is partially northward towards Kazakhstan but since it is lower in altitude, it is warmer in climate.
+
+## Getting the geopgraphical data of only the section of migration of the Bar Headed Geese
+
+```{r}
+bird_bbox <- st_bbox(bird_tracks)
+```
+
+## Plotting the data of the migration of the Bar Headed Geese and zooming in on it
+
+```{r}
+gf_sf(
+    data = bird_points,
+    geometry = ~geometry,
+    colour = "red",
+    size = 0.3
+  ) %>%
+  
+  gf_sf(
+  data = bird_bbox,
+  colour = "grey",
+  fill = "lightgrey"
+) %>%
+  
+  gf_sf(
+    data = bird_points,
+    geometry = ~geometry,
+    colour = "red",
+    size = 1.5
+  ) %>%
+  
+  gf_sf(
+    data = bird_tracks,
+    geometry = ~geometry,
+    colour = "blue"
+  ) %>%
+  
+  gf_theme(theme = theme_minimal()) %>%
+  
+  gf_labs(
+    title = "Migration Routes of the Bar-headed Geese (Anser indicus) in Kyrgyzstan"
+  )
+
+```
+Comments
+
+The migration of the Bar Headed Geese takes place between longitudes, 68E and 82E and latitudes, 30N and 43N. This also shows some back and forth movement and it also shows there are more bends and zig zags in their routes. There is also overlap in routes of the some of the birds while migrating like seen in the movement taking place between longitudes 76E and 82E and latitudes 32E and 40E.
+
+
+
+

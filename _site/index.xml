@@ -234,7 +234,7 @@ font-style: inherit;">0.8</span>)</span></code></pre></div></div>
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A1-1/</guid>
-  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
 </item>
 <item>
   <title>Assignment 1-2</title>
@@ -832,7 +832,7 @@ font-style: inherit;">"Plot 1D: Weeks Worked by Married Women with 2 or more Chi
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A1-2/</guid>
-  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
 </item>
 <item>
   <title>Assignment 1-3</title>
@@ -1376,7 +1376,7 @@ font-style: inherit;">"Plot 3C: Lyricists Collaborating with Kishore Kumar"</spa
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A1-3/</guid>
-  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
 </item>
 <item>
   <title>Assignment 2-1</title>
@@ -2725,7 +2725,7 @@ font-style: inherit;">"Math Score"</span>)</span></code></pre></div></div>
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A2-1/</guid>
-  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
 </item>
 <item>
   <title>Assignment 2-2</title>
@@ -3489,7 +3489,7 @@ params$discern): Some strata appear at multiple axes.</code></pre>
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A2-2/index1.html</guid>
-  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
 </item>
 <item>
   <title>Assignment 2-3</title>
@@ -4130,255 +4130,2703 @@ font-style: inherit;">"Resume quality over Etnicity"</span>)</span></code></pre>
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/A2-3/</guid>
-  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
 </item>
 <item>
-  <title>Fifth</title>
-  <link>https://your-website-url.example.com/posts/Fifth/index1.html</link>
+  <title>Assignment 3-1</title>
+  <link>https://your-website-url.example.com/posts/A3-1/</link>
   <description><![CDATA[ 
 
 
 
 
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I am going to draw a map of a section my hometown, Pune and plot the different restaurants in that specific area along with their cuisines.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<details class="code-fold">
+<summary>Show me the Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">#|label: setup</span></span>
+font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.6
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.1     ✔ tibble    3.3.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.2
-✔ purrr     1.2.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+font-style: inherit;">library</span>(ggformula)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(skimr)</span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;
+font-style: inherit;">library</span>(sf)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(ggformula)</span></code></pre></div></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: scales
-
-Attaching package: 'scales'
-
-The following object is masked from 'package:purrr':
-
-    discard
-
-The following object is masked from 'package:readr':
-
-    col_factor
-
-Loading required package: ggiraph
-Loading required package: ggridges
-
-New to ggformula?  Try the tutorials: 
-    learnr::run_tutorial("introduction", package = "ggformula")
-    learnr::run_tutorial("refining", package = "ggformula")</code></pre>
+font-style: inherit;">library</span>(sfheaders) </span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(osmdata)</span></code></pre></div></div>
+</details>
 </div>
-</div>
+</section>
+<section id="getting-the-geographical-data-for-a-section-of-pune" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-geographical-data-for-a-section-of-pune">Getting the geographical data for a section of Pune</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">penguins <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="do" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+font-style: italic;">## 73.849889,18.498119,73.899813,18.544562</span></span>
+<span id="cb2-2"></span>
+<span id="cb2-3">bbox_pune <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">glimpse</span>()</span></code></pre></div></div>
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">matrix</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">73.849889</span>,<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">18.498119</span>,<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">73.899813</span>,<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">18.544562</span>),</span>
+<span id="cb2-4">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">byrow =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, </span>
+<span id="cb2-5">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb2-6">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncol =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, </span>
+<span id="cb2-7">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dimnames =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y"</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"min"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"max"</span>)))</span>
+<span id="cb2-8">bbox_pune</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 344
+<pre><code>       min      max
+x 73.84989 73.89981
+y 18.49812 18.54456</code></pre>
+</div>
+</div>
+<p>Comments</p>
+<p>These points are the minimum and maximum longitudes and latitudes of one section of Pune on which the restaurants are going to be plotted.</p>
+</section>
+<section id="getting-all-the-buildings-data-in-that-specific-area-of-pune" class="level2">
+<h2 class="anchored" data-anchor-id="getting-all-the-buildings-data-in-that-specific-area-of-pune">Getting all the buildings data in that specific area of Pune</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">data_buildings <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb4-2">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">opq</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bbox =</span> bbox_pune) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb4-3">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_osm_feature</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"building"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">osmdata_sf</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb4-5">  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pluck</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"osm_polygons"</span>) </span></code></pre></div></div>
+</div>
+</section>
+<section id="getting-all-the-roads-data-in-that-specific-area-of-pune" class="level2">
+<h2 class="anchored" data-anchor-id="getting-all-the-roads-data-in-that-specific-area-of-pune">Getting all the roads data in that specific area of Pune</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">data_roads <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb5-2">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">opq</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bbox =</span> bbox_pune) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb5-3">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_osm_feature</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"highway"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">osmdata_sf</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb5-5">  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pluck</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"osm_lines"</span>) </span></code></pre></div></div>
+</div>
+</section>
+<section id="getting-all-the-rivers-data-in-that-specific-area-of-pune" class="level2">
+<h2 class="anchored" data-anchor-id="getting-all-the-rivers-data-in-that-specific-area-of-pune">Getting all the rivers data in that specific area of Pune</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">data_natural_river <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb6-2">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">opq</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bbox =</span> bbox_pune) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb6-3">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_osm_feature</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"natural"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"water"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">osmdata_sf</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb6-5">  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pluck</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"osm_polygons"</span>) </span></code></pre></div></div>
+</div>
+</section>
+<section id="getting-all-the-tree-areas-data-in-that-specific-area-of-pune" class="level2">
+<h2 class="anchored" data-anchor-id="getting-all-the-tree-areas-data-in-that-specific-area-of-pune">Getting all the tree areas data in that specific area of Pune</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">data_natural_wood <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb7-2">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">opq</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bbox =</span> bbox_pune) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb7-3">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_osm_feature</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"natural"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"wood"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">osmdata_sf</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb7-5">  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pluck</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"osm_polygons"</span>) </span></code></pre></div></div>
+</div>
+</section>
+<section id="getting-all-the-restaurants-data-in-that-specific-area-of-pune" class="level2">
+<h2 class="anchored" data-anchor-id="getting-all-the-restaurants-data-in-that-specific-area-of-pune">Getting all the restaurants data in that specific area of Pune</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">data_res <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb8-2">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">opq</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bbox =</span> bbox_pune) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb8-3">  osmdata<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_osm_feature</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"amenity"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"restaurant"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb8-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">osmdata_sf</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb8-5">  purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pluck</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"osm_points"</span>) </span></code></pre></div></div>
+</div>
+<p>Comments</p>
+<p>These are to obtain all the natural and man-made features that are going to be plotted on the map using OSM data.</p>
+</section>
+<section id="saving-the-buildings-data-locally" class="level2">
+<h2 class="anchored" data-anchor-id="saving-the-buildings-data-locally">Saving the buildings data locally</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_write</span>(data_buildings,</span>
+<span id="cb9-2">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dsn =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/building_p.gpkg"</span>,</span>
+<span id="cb9-3">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">append =</span> F,</span>
+<span id="cb9-4">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quiet =</span> F)</span></code></pre></div></div>
+</div>
+</section>
+<section id="saving-the-roads-data-locally" class="level2">
+<h2 class="anchored" data-anchor-id="saving-the-roads-data-locally">Saving the roads data locally</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_write</span>(data_roads,</span>
+<span id="cb10-2">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dsn =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/roads_p.gpkg"</span>,</span>
+<span id="cb10-3">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">append =</span> F,</span>
+<span id="cb10-4">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quiet =</span> F)</span></code></pre></div></div>
+</div>
+</section>
+<section id="saving-the-rivers-data-locally" class="level2">
+<h2 class="anchored" data-anchor-id="saving-the-rivers-data-locally">Saving the rivers data locally</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_write</span>(data_natural_river,</span>
+<span id="cb11-2">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dsn =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/rivers.gpkg"</span>,</span>
+<span id="cb11-3">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">append =</span> F,</span>
+<span id="cb11-4">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quiet =</span> F)</span></code></pre></div></div>
+</div>
+</section>
+<section id="saving-the-tree-areas-data-locally" class="level2">
+<h2 class="anchored" data-anchor-id="saving-the-tree-areas-data-locally">Saving the tree areas data locally</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_write</span>(data_natural_wood,</span>
+<span id="cb12-2">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dsn =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/wood.gpkg"</span>,</span>
+<span id="cb12-3">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">append =</span> F,</span>
+<span id="cb12-4">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quiet =</span> F)</span></code></pre></div></div>
+</div>
+</section>
+<section id="saving-the-restaurants-data-locally" class="level2">
+<h2 class="anchored" data-anchor-id="saving-the-restaurants-data-locally">Saving the restaurants data locally</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_write</span>(data_res,</span>
+<span id="cb13-2">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dsn =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/restaurants.gpkg"</span>,</span>
+<span id="cb13-3">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">append =</span> F,</span>
+<span id="cb13-4">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quiet =</span> F)</span></code></pre></div></div>
+</div>
+<p>Comments</p>
+<p>These are to save the data that we “plucked” using OSM data in order to obtain it for future use and reference.</p>
+</section>
+<section id="reading-the-saved-buildings-roads-rivers-green-areas-and-restaurants-data-in-that-specific-area-of-pune" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-saved-buildings-roads-rivers-green-areas-and-restaurants-data-in-that-specific-area-of-pune">Reading the saved buildings, roads, rivers, green areas and restaurants data in that specific area of Pune</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">buildings_pune <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/building_p.gpkg"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `building_p' from data source 
+  `C:\Users\Ashna Hemmady\Documents\Git_first\posts\Data\gpkg-Data\building_p.gpkg' 
+  using driver `GPKG'
+Simple feature collection with 12262 features and 122 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 73.84911 ymin: 18.49783 xmax: 73.90109 ymax: 18.54502
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">roads_pune <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/roads_p.gpkg"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `roads_p' from data source 
+  `C:\Users\Ashna Hemmady\Documents\Git_first\posts\Data\gpkg-Data\roads_p.gpkg' 
+  using driver `GPKG'
+Simple feature collection with 5377 features and 91 fields
+Geometry type: LINESTRING
+Dimension:     XY
+Bounding box:  xmin: 73.84031 ymin: 18.49127 xmax: 73.90588 ymax: 18.54908
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">rivers_p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/rivers.gpkg"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `rivers' from data source 
+  `C:\Users\Ashna Hemmady\Documents\Git_first\posts\Data\gpkg-Data\rivers.gpkg' 
+  using driver `GPKG'
+Simple feature collection with 27 features and 11 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 73.84074 ymin: 18.50038 xmax: 73.91581 ymax: 18.55424
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">wood <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/wood.gpkg"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `wood' from data source 
+  `C:\Users\Ashna Hemmady\Documents\Git_first\posts\Data\gpkg-Data\wood.gpkg' 
+  using driver `GPKG'
+Simple feature collection with 11 features and 9 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 73.85263 ymin: 18.49695 xmax: 73.89789 ymax: 18.54495
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">restaurants_p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/gpkg-Data/restaurants.gpkg"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `restaurants' from data source 
+  `C:\Users\Ashna Hemmady\Documents\Git_first\posts\Data\gpkg-Data\restaurants.gpkg' 
+  using driver `GPKG'
+Simple feature collection with 133 features and 56 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: 73.84994 ymin: 18.49905 xmax: 73.89979 ymax: 18.54434
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+</div>
+</section>
+<section id="inspecting-the-buildings-roads-rivers-green-areas-and-restaurants-data" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-the-buildings-roads-rivers-green-areas-and-restaurants-data">Inspecting the buildings, roads, rivers, green areas and restaurants data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(buildings_pune)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 12,262
+Columns: 123
+$ osm_id                    &lt;chr&gt; "52755363", "52755381", "52755445", "5275557…
+$ name                      &lt;chr&gt; "Nehru Memorial Hall", "SGS Mall", "Dorabjee…
+$ access                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.city                 &lt;chr&gt; NA, NA, "Pune", NA, NA, NA, NA, NA, NA, NA, …
+$ addr.country              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.district             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.full                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.housename            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.housenumber          &lt;chr&gt; NA, NA, "1-B, Moledina Rd", NA, NA, NA, NA, …
+$ addr.neighbourhood        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.place                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.postcode             &lt;chr&gt; NA, NA, "411001", NA, NA, NA, NA, NA, NA, NA…
+$ addr.province             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.state                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.street               &lt;chr&gt; NA, NA, "Camp, Pune, Maharashtra 411001, Ind…
+$ addr.suburb               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ addr.unit                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ air_conditioning          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ alt_name                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ amenity                   &lt;chr&gt; "theatre", NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ architect                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ area                      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ bar                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ branch                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ brand                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ brand.wikidata            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ building                  &lt;chr&gt; "yes", "yes", "yes", "school", "school", "sc…
+$ building.colour           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ building.flats            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ building.levels           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ building.material         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ bus                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ capacity                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ capacity.disabled         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ changing_table            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ check_date                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ clothes                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ club                      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ community_centre          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ construction              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ cuisine                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ currency.INR              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ denomination              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ description               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ developer                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ diet.local                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ diet.non.vegetarian       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ email                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ emergency                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ fee                       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ female                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ government                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ healthcare                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ healthcare.speciality     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ height                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ historic                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ house                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ image                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ internet_access           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ internet_access.fee       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ landuse                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ language.de               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ layer                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ location                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ male                      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ man_made                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ min_height                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ min_level                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ name.en                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ name.etymology.wikidata   &lt;chr&gt; "Q1047", NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ name.hi                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ name.mr                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ network                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ office                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ official_name             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ opening_hours             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ opening_hours.covid19     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ operator                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ operator.type             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ operator.wikidata         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ organic                   &lt;chr&gt; NA, NA, "yes", NA, NA, NA, NA, NA, NA, NA, N…
+$ parking                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.cards             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.cash              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.credit_cards      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.debit_cards       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.electronic_purses &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.google_pay        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.mastercard        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.mobikwik          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.notes             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.paytm             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ payment.phonepe           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ phone                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ public_transport          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ railway                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ religion                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ reservation               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ roof.colour               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ roof.levels               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ roof.shape                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ rooms                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ service.bicycle.repair    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ service.bicycle.retail    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ shop                      &lt;chr&gt; NA, "mall", "supermarket", NA, NA, NA, NA, N…
+$ short_name                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ smoking                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ source                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ start_date                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ station                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ subway                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ surface                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ toilets.disposal          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ toilets.handwashing       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ toilets.position          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ tourism                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ unisex                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ website                   &lt;chr&gt; NA, NA, "https://dorabjeesonline.com/", NA, …
+$ wheelchair                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ wikidata                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ wikimedia_commons         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ wikipedia                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ geom                      &lt;POLYGON [°]&gt; POLYGON ((73.87574 18.51972..., POLY…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(roads_pune)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 5,377
+Columns: 92
+$ osm_id                  &lt;chr&gt; "22840813", "22840815", "22840829", "22840830"…
+$ name                    &lt;chr&gt; NA, NA, "Bajirao Road", "Smita Patil Path", "G…
+$ AND.importance_level    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ abutters                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ access                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ access.conditional      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ addr.city               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ addr.neighbourhood      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ addr.postcode           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ addr.street             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ alt_name                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ alt_name.en             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ alt_name.mr             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ area                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ bench                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ bicycle                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ brand                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ brand.pa                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ brand.ur                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ brand.wikidata          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ brand.wikipedia         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ bridge                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ bridge.structure        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ bus                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ bus.lanes               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ busway                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ covered                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ crossing                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ crossing.markings       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ cutting                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ cycleway                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ description             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ direction               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ dog                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ embankment              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ est_width               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ foot                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ footway                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ ford                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ handrail                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ height                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ hgv                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ highway                 &lt;chr&gt; "secondary", "residential", "trunk", "secondar…
+$ horse                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ incline                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ indoor                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ junction                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ lane_markings           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ lanes                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, "2", NA, NA, NA, NA, N…
+$ layer                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ level                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ lit                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ loc_name                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ loc_name.mr             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ locked                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ maxaxleload             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ maxheight               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ maxspeed                &lt;chr&gt; NA, NA, NA, NA, "30", NA, NA, NA, NA, NA, NA, …
+$ min_height              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ motor_vehicle           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ motorcar                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ motorcycle              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ name.en                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ name.etymology.wikidata &lt;chr&gt; NA, NA, "Q2514706", NA, "Q4802144", NA, NA, NA…
+$ name.mr                 &lt;chr&gt; NA, NA, "बाजीराव रस्ता", "स्मिता पाटील पथ", "जनरल वैद्य मार्ग", …
+$ name.ne                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ name.pa                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ name.ur                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ official_name           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ oneway                  &lt;chr&gt; "yes", "no", "yes", "yes", NA, "no", "yes", NA…
+$ opening_date            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ postal_code             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ psv                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ public_transport        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ ref                     &lt;chr&gt; NA, NA, "NH60;NH65", NA, NA, NA, NA, NA, NA, N…
+$ ref.new                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ ref.old                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ route                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ service                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ shelter                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ shoulder                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ sidewalk                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ source                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ step_count              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ surface                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, "asphalt", NA, NA, NA,…
+$ tactile_paving          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ toll                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ tunnel                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ wheelchair              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ width                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ wikidata                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ geom                    &lt;LINESTRING [°]&gt; LINESTRING (73.85801 18.524..., LIN…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(rivers_p)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 27
+Columns: 12
+$ osm_id           &lt;chr&gt; "61458970", "197954187", "206255000", "206255001", "2…
+$ name             &lt;chr&gt; NA, NA, NA, NA, "Mula-Mutha River", NA, NA, "Peshve U…
+$ addr.city        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "Pune", N…
+$ addr.postcode    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "411001",…
+$ addr.street.name &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "Wellesly…
+$ landuse          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ min_height       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ name.mr          &lt;chr&gt; NA, NA, NA, NA, "मुळा-मुठा नदी", NA, NA, "पेशवे उद्यान तलाव", NA…
+$ natural          &lt;chr&gt; "wood", "wood", NA, "water", "water", "water", NA, "w…
+$ place            &lt;chr&gt; "islet", "islet", NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ water            &lt;chr&gt; NA, NA, NA, "river", "river", "river", NA, NA, NA, NA…
+$ geom             &lt;POLYGON [°]&gt; POLYGON ((73.86409 18.53497..., POLYGON ((73.…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(wood)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11
+Columns: 10
+$ osm_id     &lt;chr&gt; "61458970", "197954187", "207899908", "207899978", "9622503…
+$ name       &lt;chr&gt; NA, NA, "Talyatala Ganapati", NA, NA, NA, "forest", NA, NA,…
+$ amenity    &lt;chr&gt; NA, NA, "place_of_worship", NA, NA, NA, NA, NA, NA, NA, NA
+$ leaf_cycle &lt;chr&gt; NA, NA, NA, NA, NA, NA, "evergreen", NA, NA, NA, NA
+$ leaf_type  &lt;chr&gt; NA, NA, NA, NA, NA, NA, "mixed", NA, NA, NA, NA
+$ name.mr    &lt;chr&gt; NA, NA, "तळ्यातला गणपती", NA, NA, NA, NA, NA, NA, NA, NA
+$ natural    &lt;chr&gt; "wood", "wood", NA, NA, "wood", "wood", "wood", "wood", "wo…
+$ place      &lt;chr&gt; "islet", "islet", NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ religion   &lt;chr&gt; NA, NA, "hindu", NA, NA, NA, NA, NA, NA, NA, NA
+$ geom       &lt;POLYGON [°]&gt; POLYGON ((73.86409 18.53497..., POLYGON ((73.86322 18.53309…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(restaurants_p)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 133
+Columns: 57
+$ osm_id                   &lt;chr&gt; "283163978", "283166314", "518295335", "51864…
+$ name                     &lt;chr&gt; "The Charcoal Pit", "The Great Punjab", "Le P…
+$ addr.city                &lt;chr&gt; NA, NA, NA, "Pune", "Pune", "Pune", NA, NA, N…
+$ addr.country             &lt;chr&gt; NA, NA, NA, "IN", "IN", "IN", NA, NA, NA, NA,…
+$ addr.district            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ addr.floor               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ addr.housename           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ addr.housenumber         &lt;chr&gt; NA, NA, NA, NA, NA, "Virwani Plaza 11", NA, N…
+$ addr.postcode            &lt;chr&gt; NA, NA, NA, "411001", "411001", "411001", NA,…
+$ addr.state               &lt;chr&gt; NA, NA, NA, "MH", "Maharashtra", "Maharashtra…
+$ addr.street              &lt;chr&gt; NA, NA, NA, "Boat Club Road", "East Street", …
+$ addr.suburb              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ address                  &lt;chr&gt; "5 M. G. Road", NA, NA, NA, NA, NA, NA, NA, N…
+$ air_conditioning         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ amenity                  &lt;chr&gt; "restaurant", "restaurant", "restaurant", "re…
+$ bar                      &lt;chr&gt; NA, "yes", NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ branch                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ brand                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ brand.wikidata           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ brand.wikipedia          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ check_date               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ check_date.opening_hours &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ contact.email            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ contact.mobile           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ contact.phone            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ contact.website          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ cuisine                  &lt;chr&gt; NA, "indian", NA, "chinese", NA, NA, NA, NA, …
+$ description              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.chicken             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.fish                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.halal               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.jain                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.lacto_vegetarian    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.non.vegetarian      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.seafood             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.vegan               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ diet.vegetarian          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ drive_in                 &lt;chr&gt; NA, NA, NA, "no", NA, NA, NA, NA, NA, NA, NA,…
+$ fixme                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ highchair                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ internet_access          &lt;chr&gt; NA, NA, NA, "no", "no", "no", NA, NA, NA, NA,…
+$ internet_access.fee      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ level                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ microbrewery             &lt;chr&gt; NA, NA, NA, "no", NA, NA, NA, NA, NA, NA, NA,…
+$ name.en                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ name.mr                  &lt;chr&gt; NA, NA, NA, "मेनलँड चायना", NA, NA, NA, NA, NA, N…
+$ opening_hours            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ outdoor_seating          &lt;chr&gt; NA, NA, NA, "no", "no", "yes", NA, NA, NA, NA…
+$ payment.cash             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ payment.upi              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ phone                    &lt;chr&gt; NA, NA, NA, "+91 20 66013030", "+91 20 263431…
+$ ramp                     &lt;chr&gt; NA, "yes", NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ smoking                  &lt;chr&gt; NA, NA, NA, "no", "no", "yes", NA, NA, NA, NA…
+$ takeaway                 &lt;chr&gt; NA, NA, NA, "yes", "yes", "yes", NA, NA, NA, …
+$ website                  &lt;chr&gt; NA, NA, NA, "www.mainlandchina.com", "1000oak…
+$ wheelchair               &lt;chr&gt; NA, NA, NA, "no", NA, NA, NA, NA, NA, NA, NA,…
+$ geom                     &lt;POINT [°]&gt; POINT (73.87914 18.51679), POINT (73.89…</code></pre>
+</div>
+</div>
+</section>
+<section id="making-the-map-of-the-specific-section-of-pune-and-plotting-the-restaurants-within-that-along-with-their-cuisines" class="level2">
+<h2 class="anchored" data-anchor-id="making-the-map-of-the-specific-section-of-pune-and-plotting-the-restaurants-within-that-along-with-their-cuisines">Making the Map of the specific section of Pune and Plotting the restaurants within that along with their cuisines</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> buildings_pune, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> geom, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb34-2">  </span>
+<span id="cb34-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> roads_pune, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> geom, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gold"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gold"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb34-4">  </span>
+<span id="cb34-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> rivers_p, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> geom, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightblue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightblue"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb34-6">  </span>
+<span id="cb34-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> wood, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> geom, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightgreen"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightgreen"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb34-8">  </span>
+<span id="cb34-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> restaurants_p, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> geom, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>cuisine, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>cuisine) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb34-10">  </span>
+<span id="cb34-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Mapping Restaurants and their Cuisines in a section of Pune"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb34-12">  </span>
+<span id="cb34-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">theme =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb34-14">  </span>
+<span id="cb34-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_theme</span>(</span>
+<span id="cb34-16">     <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.text  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb34-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>),</span>
+<span id="cb34-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.key.size =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.004</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>),</span>
+<span id="cb34-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span> </span>
+<span id="cb34-20">  )</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-1/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The grey areas are buildings, green areas are tree covered regions, yellow lines are roads, blue lines indicate rivers and the coloured or grey points are restaurants. There are quite a few restaurants clustered at the centre (18.52N, 73.87E), top right (between 18.53N, 73.90E and 18.54N, 73.90E) and towards the bottom left (18.51N, 73.85E) of the map. This suggests that those might be busy areas, maybe even commercial or at least where there is quite some activity of people. There is a wide variety of cuisines identified showing that Pune’s food is diverse. Apart from Indian food, there seems to be a strong liking for Chinese among the people based on the number of restaurants serving Chinese. Italian food also seems to be popular, along with Thai and Asian. There are also a presence of American food. There are only a few restaurants along the river and around the tree areas, suggesting there might be only a few to no people living there. The restaurants are closer to the roads and buildings, that is, they are placed mostly near urban areas.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/A3-1/</guid>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
+</item>
+<item>
+  <title>Assignment 3-2</title>
+  <link>https://your-website-url.example.com/posts/A3-2/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I am going track the Seasonal Migration of the Bar Headed Geese (Anser indicus) from Kyrgyzstan</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show me the Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggformula)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(sf)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(sfheaders) </span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(osmdata)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tmap)</span></code></pre></div></div>
+</details>
+</div>
+</section>
+<section id="getting-the-world-map-data" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-world-map-data">Getting the World Map Data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"World"</span>)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(World)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 17 fields
+Attribute-geometry relationships: constant (12), aggregate (3), identity (2)
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -90 xmax: 180 ymax: 42.688
+Geodetic CRS:  WGS 84
+  iso_a3        name  sovereignt     continent               area  pop_est
+1    AFG Afghanistan Afghanistan          Asia   642393.20 [km^2] 38041754
+2    ALB     Albania     Albania        Europe    28298.42 [km^2]  2854191
+3    DZA     Algeria     Algeria        Africa  2312302.79 [km^2] 43053054
+4    AGO      Angola      Angola        Africa  1249442.03 [km^2] 31825295
+5    ATA  Antarctica  Antarctica    Antarctica 12258324.81 [km^2]     4490
+6    ARG   Argentina   Argentina South America  2783123.36 [km^2] 44938712
+  pop_est_dens                   economy              income_grp gdp_cap_est
+1 5.921880e+01 7. Least developed region           5. Low income    507.1007
+2 1.008604e+02      6. Developing region  4. Lower middle income   5353.1806
+3 1.861912e+01      6. Developing region  3. Upper middle income   3973.9573
+4 2.547161e+01 7. Least developed region  3. Upper middle income   2790.7047
+5 3.662817e-04      6. Developing region 2. High income: nonOECD 200000.0000
+6 1.614686e+01   5. Emerging region: G20  3. Upper middle income   9912.2779
+  life_exp well_being footprint      HPI inequality gender press
+1   61.982   2.436034  1.139635 16.21067         NA  0.665 19.09
+2   76.463   5.255482  3.674262 46.33355       29.4  0.116 54.10
+3   76.377   5.217018  3.110979 47.44608       27.6  0.460 41.98
+4       NA         NA        NA       NA       51.3  0.520 52.44
+5       NA         NA        NA       NA         NA     NA    NA
+6   75.390   5.908279  6.391003 43.79233       40.7  0.292 63.13
+                        geometry
+1 MULTIPOLYGON (((66.217 37.3...
+2 MULTIPOLYGON (((20.605 41.0...
+3 MULTIPOLYGON (((-4.923 24.9...
+4 MULTIPOLYGON (((12.322 -6.1...
+5 MULTIPOLYGON (((-61.883 -80...
+6 MULTIPOLYGON (((-68.634 -52...</code></pre>
+</div>
+</div>
+</section>
+<section id="reading-the-bar-headed-geese-migration-data-that-is-their-locations-and-tracks" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-bar-headed-geese-migration-data-that-is-their-locations-and-tracks">Reading the Bar Headed Geese migration data that is their locations and tracks</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">bird_points <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/points.shp"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `points' from data source 
+  `C:\Users\Ashna Hemmady\Documents\Git_first\posts\Data\points.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 2174 features and 30 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: 67.551 ymin: 28.827 xmax: 82.156 ymax: 42.783
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">bird_tracks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/lines.shp"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `lines' from data source 
+  `C:\Users\Ashna Hemmady\Documents\Git_first\posts\Data\lines.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 6 features and 1 field
+Geometry type: LINESTRING
+Dimension:     XY
+Bounding box:  xmin: 67.551 ymin: 28.827 xmax: 82.156 ymax: 42.783
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+</div>
+</section>
+<section id="plotting-the-world-map-and-the-migration-data-of-the-bar-headed-geese" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-the-world-map-and-the-migration-data-of-the-bar-headed-geese">Plotting the World Map and the migration data of the Bar Headed Geese</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(</span>
+<span id="cb8-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> World, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightgrey"</span></span>
+<span id="cb8-3">) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-4">  </span>
+<span id="cb8-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>( </span>
+<span id="cb8-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> bird_tracks, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>geometry, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span></span>
+<span id="cb8-7">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-8">  </span>
+<span id="cb8-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(</span>
+<span id="cb8-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> bird_points, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>geometry, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span></span>
+<span id="cb8-11">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-12">  </span>
+<span id="cb8-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">theme =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-14">  </span>
+<span id="cb8-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb8-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Migration Routes of the Bar-headed Goose (Anser indicus)"</span></span>
+<span id="cb8-17">  )</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-2/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>This map shows the migration routes of the Bar Headed Geese in Kyrgyzstan. It shows that the migration is limited to Central and South Asia. There is no cross continent movement, but there is cross country movement southward from Kyrgyzstan to Afghanistan, Pakistan, India and China among the few. The map shows mostly southward movement of the birds. This might imply that the migration is due to colder months in Krygyzstan, because as you move southward in Asia, those regions comparitively have warmer climates. Although there is one instance where the movement is partially northward towards Kazakhstan but since it is lower in altitude, it is warmer in climate.</p>
+</section>
+<section id="getting-the-geopgraphical-data-of-only-the-section-of-migration-of-the-bar-headed-geese" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-geopgraphical-data-of-only-the-section-of-migration-of-the-bar-headed-geese">Getting the geopgraphical data of only the section of migration of the Bar Headed Geese</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">bird_bbox <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_bbox</span>(bird_tracks)</span></code></pre></div></div>
+</div>
+</section>
+<section id="plotting-the-data-of-the-migration-of-the-bar-headed-geese-and-zooming-in-on-it" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-the-data-of-the-migration-of-the-bar-headed-geese-and-zooming-in-on-it">Plotting the data of the migration of the Bar Headed Geese and zooming in on it</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(</span>
+<span id="cb10-2">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> bird_points,</span>
+<span id="cb10-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>geometry,</span>
+<span id="cb10-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>,</span>
+<span id="cb10-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span></span>
+<span id="cb10-6">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-7">  </span>
+<span id="cb10-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(</span>
+<span id="cb10-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> bird_bbox,</span>
+<span id="cb10-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey"</span>,</span>
+<span id="cb10-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightgrey"</span></span>
+<span id="cb10-12">) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-13">  </span>
+<span id="cb10-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(</span>
+<span id="cb10-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> bird_points,</span>
+<span id="cb10-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>geometry,</span>
+<span id="cb10-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>,</span>
+<span id="cb10-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span></span>
+<span id="cb10-19">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-20">  </span>
+<span id="cb10-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_sf</span>(</span>
+<span id="cb10-22">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> bird_tracks,</span>
+<span id="cb10-23">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>geometry,</span>
+<span id="cb10-24">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span></span>
+<span id="cb10-25">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-26">  </span>
+<span id="cb10-27">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">theme =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-28">  </span>
+<span id="cb10-29">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gf_labs</span>(</span>
+<span id="cb10-30">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Migration Routes of the Bar-headed Geese (Anser indicus) in Kyrgyzstan"</span></span>
+<span id="cb10-31">  )</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-2/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The migration of the Bar Headed Geese takes place between longitudes, 68E and 82E and latitudes, 30N and 43N. This also shows some back and forth movement and it also shows there are more bends and zig zags in their routes. There is also overlap in routes of the some of the birds while migrating like seen in the movement taking place between longitudes 76E and 82E and latitudes 32E and 40E.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/A3-2/</guid>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
+</item>
+<item>
+  <title>Assignment 3-3</title>
+  <link>https://your-website-url.example.com/posts/A3-3/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I am going to examine data reguarding airlines connectivity and make a few network visualisations</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show me the Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(igraph) </span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidygraph) </span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggraph) </span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(graphlayouts) </span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tinytable)</span></code></pre></div></div>
+</details>
+</div>
+</section>
+<section id="reading-the-airlines-network-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-airlines-network-dataset">Reading the Airlines Network dataset</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">a_nodes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/airlines_nodes.csv"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 235 Columns: 8
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (3): Label, Code, City
+dbl (5): Id, latitude, longitude, ToFly, Visits
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">a_edges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../Data/airlines_edges.csv"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1297 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Type
+dbl (3): Source, Target, Weight
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="inspecting-the-airlines-network-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-the-airlines-network-dataset">Inspecting the Airlines Network dataset</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(a_nodes)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 235
 Columns: 8
-$ species     &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Ad…
-$ island      &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Tor…
-$ bill_len    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, 42.0, …
-$ bill_dep    &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, 20.2, …
-$ flipper_len &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186, 180,…
-$ body_mass   &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 4250, …
-$ sex         &lt;fct&gt; male, female, female, NA, female, male, female, male, NA, …
-$ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+$ Id        &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ Label     &lt;chr&gt; "Adams Field Airport", "Akron/canton Regional", "Albany Inte…
+$ Code      &lt;chr&gt; "LIT", "CAK", "ALB", "CHO", "ABQ", "AEX", "APN", "ACV", "AVL…
+$ City      &lt;chr&gt; "Little Rock, AR", "Akron/Canton, OH", "Albany", "Charlottes…
+$ latitude  &lt;dbl&gt; 34.72944, 40.91611, 42.73333, 38.13333, 35.04028, 31.32750, …
+$ longitude &lt;dbl&gt; -92.22444, -81.44222, -73.80000, -78.45000, -106.60917, -92.…
+$ ToFly     &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, …
+$ Visits    &lt;dbl&gt; 105, 123, 129, 114, 105, 93, 135, 123, 105, 90, 132, 117, 13…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(a_edges)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,297
+Columns: 4
+$ Source &lt;dbl&gt; 0, 1, 1, 2, 3, 4, 4, 5, 7, 7, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10…
+$ Target &lt;dbl&gt; 109, 36, 61, 152, 104, 132, 168, 217, 173, 177, 53, 105, 106, 1…
+$ Type   &lt;chr&gt; "Undirected", "Undirected", "Undirected", "Undirected", "Undire…
+$ Weight &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,…</code></pre>
 </div>
 </div>
-<p>##Qual charts</p>
+</section>
+<section id="data-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
+<p>Id: Identifier for each airport</p>
+<p>Label: Name of the airport</p>
+<p>Code: Airport code</p>
+<p>City: City where the airport is located</p>
+<p>latitude: Latitude of the airport</p>
+<p>longitude: Longitude of the airport</p>
+<p>ToFly: Status indicator</p>
+<p>Visits: Measure of people’s activity in airports</p>
+<p>Source: Origin airport ID</p>
+<p>Target: Destination airport ID</p>
+<p>Type: Route type</p>
+<p>Weight: Frequency of flights</p>
+</section>
+<section id="data-munging-of-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="data-munging-of-the-dataset">Data Munging of the dataset</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">penguins <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">air_nodes <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> a_nodes <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">gf_bar</span>(<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">~</span> species)</span></code></pre></div></div>
+font-style: inherit;">mutate</span>(</span>
+<span id="cb10-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">where</span>(is.character), as.factor)</span>
+<span id="cb10-4">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb10-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ToFly =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(ToFly)</span>
+<span id="cb10-7">  )</span>
+<span id="cb10-8"></span>
+<span id="cb10-9">air_edges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> a_edges <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb10-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb10-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Source =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Source),</span>
+<span id="cb10-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Target =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Target),</span>
+<span id="cb10-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Type =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Type)</span>
+<span id="cb10-14">  )</span></code></pre></div></div>
+</div>
+</section>
+<section id="making-a-graph-object-for-the-airlines-network-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="making-a-graph-object-for-the-airlines-network-dataset">Making a Graph Object for the Airlines Network dataset</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">air_graph <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> tidygraph<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tbl_graph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nodes =</span> air_nodes,</span>
+<span id="cb11-2">                                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">edges =</span> air_edges,</span>
+<span id="cb11-3">                                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">directed =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb11-4">air_graph</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tbl_graph: 235 nodes and 1297 edges
+#
+# A directed simple graph with 1 component
+#
+# Node Data: 235 × 8 (active)
+      Id Label                       Code  City  latitude longitude ToFly Visits
+   &lt;dbl&gt; &lt;fct&gt;                       &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt;
+ 1     0 Adams Field Airport         LIT   Litt…     34.7     -92.2 0        105
+ 2     1 Akron/canton Regional       CAK   Akro…     40.9     -81.4 0        123
+ 3     2 Albany International        ALB   Alba…     42.7     -73.8 0        129
+ 4     3 Albemarle                   CHO   Char…     38.1     -78.4 1        114
+ 5     4 Albuquerque International   ABQ   Albu…     35.0    -107.  0        105
+ 6     5 Alexandria International    AEX   Alex…     31.3     -92.5 0         93
+ 7     6 Alpena County Regional      APN   Alpe…     45.1     -83.6 0        135
+ 8     7 Arcata                      ACV   Arca…     41.0    -124.  0        123
+ 9     8 Asheville Regional Airport  AVL   Flet…     35.4     -82.5 0        105
+10     9 Austin-bergstrom Internati… AUS   Aust…     30.2     -97.7 1         90
+# ℹ 225 more rows
+#
+# Edge Data: 1,297 × 4
+   from    to Type       Weight
+  &lt;int&gt; &lt;int&gt; &lt;fct&gt;       &lt;dbl&gt;
+1     1   110 Undirected     10
+2     2    37 Undirected     10
+3     2    62 Undirected     10
+# ℹ 1,294 more rows</code></pre>
+</div>
+</div>
+<p>Comments</p>
+<p>This is done to structure the raw Airlines Network dataset to a structured dataset for the network visualisations</p>
+</section>
+<section id="major-airports-and-connected-smaller-ariports" class="level2">
+<h2 class="anchored" data-anchor-id="major-airports-and-connected-smaller-ariports">Major Airports and connected Smaller Ariports</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">air_graph <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-2">  </span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">activate</span>(nodes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">degree =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centrality_degree</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-5">  </span>
+<span id="cb13-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fr"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.15</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> ToFly, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> degree), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Pastel1"</span>) </span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">penguins <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gf_bar</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> species, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>species, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.3</span>)</span></code></pre></div></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/A3-3/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Comments</p>
+<p>The few airports, that is the points in the middle, are very important since they have a lot of connections (degree of nodes). This suggests that the airline system depend on them. The smaller points are the small airports with only a few to very few connections and they are dependent on the major airports in the middle.</p>
+</section>
+<section id="important-flight-routes-between-the-airports" class="level2">
+<h2 class="anchored" data-anchor-id="important-flight-routes-between-the-airports">Important Flight Routes between the Airports</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">penguins <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">air_graph <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb14-2">  </span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gf_bar</span>(<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">activate</span>(edges) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span> species, <span class="at" style="color: #657422;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb14-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">fill=</span><span class="sc" style="color: #5E5E5E;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">~</span> island, <span class="at" style="color: #657422;
+font-style: inherit;">between =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">colour=</span> <span class="st" style="color: #20794D;
+font-style: inherit;">centrality_edge_betweenness</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb14-5">  </span>
+<span id="cb14-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">activate</span>(nodes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb14-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">degree =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centrality_degree</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb14-8">  </span>
+<span id="cb14-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fr"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> between, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> between)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> degree),<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">alpha=</span> <span class="fl" style="color: #AD0000;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">0.3</span>)</span></code></pre></div></div>
+font-style: inherit;">"pink"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-12">  </span>
+<span id="cb14-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.text  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb14-14">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>),</span>
+<span id="cb14-15">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.key.size =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>),</span>
+<span id="cb14-16">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `trans` argument of `continuous_scale()` is deprecated as of ggplot2 3.5.0.
+ℹ Please use the `transform` argument instead.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/A3-3/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>##quant variables</p>
+<p>Comments</p>
+<p>Only a few routes are very important since only a few routes are represented by thick and lighter blue lines. The other routes are not very important as they are represented by thin and darker blue lines. This means only a small number of routes are used over and over again to connect to different airports in the network. The routes which have high betweeness between them, that is the thicker, lighter blue routes, connect airports to each other, making them extremely important. If any one of these airports are affected, it would in turn affect a lot of dependent airports.</p>
+</section>
+<section id="busy-airports-and-their-connections" class="level2">
+<h2 class="anchored" data-anchor-id="busy-airports-and-their-connections">Busy Airports and their Connections</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">penguins <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">air_graph <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb16-2">  </span>
+<span id="cb16-3">   <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">activate</span>(nodes) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span> body_mass)</span></code></pre></div></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
-(`stat_density()`).</code></pre>
-</div>
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb16-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">degree =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centrality_degree</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb16-5">  </span>
+<span id="cb16-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"kk"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.15</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> Visits, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> degree), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_viridis_c</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">penguins <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> body_mass, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> species )</span></code></pre></div></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
-(`stat_density()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/A3-3/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Comments</p>
+<p>The most visited airports are scattered all across, the bigger and smaller points (airports) both are visited a lot. This implies that the number of connections of the airports (size of points) does not affect the activity of people in that airport. There are some major airports which are less visited than the smaller airports suggesting that the number of flights do not depend on the number of connections.</p>
+</section>
+<section id="flight-routes-and-their-types" class="level2">
+<h2 class="anchored" data-anchor-id="flight-routes-and-their-types">Flight routes and their types</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">penguins <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">air_graph <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb17-2">  </span>
+<span id="cb17-3">   <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gf_density</span>(<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">activate</span>(edges) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span> body_mass) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb17-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">gf_facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">between =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">~</span> island)</span></code></pre></div></div>
+font-style: inherit;">centrality_edge_betweenness</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb17-5">  </span>
+<span id="cb17-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"kk"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb17-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> Type, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> between)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb17-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pink"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
-(`stat_density()`).</code></pre>
+<pre><code>Warning: Using edge_width for a discrete variable is not advised.</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/A3-3/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Comments</p>
+<p>This network shows that all flight routes are undirected. It implies that the if the airports have connections between them, it has both to and fro flights between them.</p>
+</section>
+<section id="airports-and-their-flight-frequency" class="level2">
+<h2 class="anchored" data-anchor-id="airports-and-their-flight-frequency">Airports and their flight frequency</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">penguins <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">air_graph <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb19-2">  </span>
+<span id="cb19-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gf_density_ridges</span>(species <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">activate</span>(nodes) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span> body_mass, <span class="at" style="color: #657422;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb19-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">fill=</span> <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">~</span> species, <span class="at" style="color: #657422;
+font-style: inherit;">degree =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">alpha=</span> <span class="fl" style="color: #AD0000;
+font-style: inherit;">centrality_degree</span>()) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">0.3</span>)</span></code></pre></div></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Picking joint bandwidth of 153</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
-(`stat_density_ridges()`).</code></pre>
-</div>
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb19-5">  </span>
+<span id="cb19-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"linear"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">circular =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb19-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">edge_colour =</span>  Weight)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb19-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> degree), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb19-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_edge_color_distiller</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"YlOrRd"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb19-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_colour_viridis_c</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/Fifth/index1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/A3-3/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Comments This shows how frequent the flights are between the airports. Most flights’ frequency is below 250. Only a select few flights have more than 250 in terms of frequency which are represented in a lighter red colour. Also shows how it’s not necessary for only major airports to have more flight frequency. Some of the smaller airports (points coloured in blues and purples) have more flight frequency than the major airports (points coloured in yellows and greens).</p>
 
 
+</section>
 
  ]]></description>
-  <guid>https://your-website-url.example.com/posts/Fifth/index1.html</guid>
-  <pubDate>Sun, 08 Feb 2026 01:03:29 GMT</pubDate>
+  <guid>https://your-website-url.example.com/posts/A3-3/</guid>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
+</item>
+<item>
+  <title>Assignment 3-4</title>
+  <link>https://your-website-url.example.com/posts/A3-4/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I am going to create network visualisations of The Famous Zachary Karate Club dataset</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show me the Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(igraph) </span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidygraph) </span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggraph) </span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(graphlayouts) </span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tinytable)</span></code></pre></div></div>
+</details>
+</div>
+</section>
+<section id="reading-the-famous-zachary-club-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-famous-zachary-club-dataset">Reading The Famous Zachary Club dataset</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"karate"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">package=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"igraphdata"</span>)</span>
+<span id="cb2-2">karate</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>This graph was created by an old(er) igraph version.
+ℹ Call `igraph::upgrade_graph()` on it to use with the current igraph version.
+For now we convert it on the fly...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IGRAPH 4b458a1 UNW- 34 78 -- Zachary's karate club network
++ attr: name (g/c), Citation (g/c), Author (g/c), Faction (v/n), name
+| (v/c), label (v/c), color (v/n), weight (e/n)
++ edges from 4b458a1 (vertex names):
+ [1] Mr Hi  --Actor 2  Mr Hi  --Actor 3  Mr Hi  --Actor 4  Mr Hi  --Actor 5 
+ [5] Mr Hi  --Actor 6  Mr Hi  --Actor 7  Mr Hi  --Actor 8  Mr Hi  --Actor 9 
+ [9] Mr Hi  --Actor 11 Mr Hi  --Actor 12 Mr Hi  --Actor 13 Mr Hi  --Actor 14
+[13] Mr Hi  --Actor 18 Mr Hi  --Actor 20 Mr Hi  --Actor 22 Mr Hi  --Actor 32
+[17] Actor 2--Actor 3  Actor 2--Actor 4  Actor 2--Actor 8  Actor 2--Actor 14
+[21] Actor 2--Actor 18 Actor 2--Actor 20 Actor 2--Actor 22 Actor 2--Actor 31
+[25] Actor 3--Actor 4  Actor 3--Actor 8  Actor 3--Actor 9  Actor 3--Actor 10
++ ... omitted several edges</code></pre>
+</div>
+</div>
+</section>
+<section id="inspecting-the-famous-zachary-karate-club-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-the-famous-zachary-karate-club-dataset">Inspecting The Famous Zachary Karate Club dataset</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(karate)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Class 'igraph'  hidden list of 10
+ $ : num 34
+ $ : logi FALSE
+ $ : num [1:78] 1 2 3 4 5 6 7 8 10 11 ...
+ $ : num [1:78] 0 0 0 0 0 0 0 0 0 0 ...
+ $ : num [1:78] 0 1 16 2 17 24 3 4 5 35 ...
+ $ : num [1:78] 0 1 2 3 4 5 6 7 8 9 ...
+ $ : num [1:35] 0 0 1 3 6 7 8 11 15 17 ...
+ $ : num [1:35] 0 16 24 32 35 37 40 41 41 44 ...
+ $ :List of 4
+  ..$ : num [1:3] 1 0 1
+  ..$ :List of 3
+  .. ..$ name    : chr "Zachary's karate club network"
+  .. ..$ Citation: chr "Wayne W. Zachary. An Information Flow Model for Conflict and Fission in Small Groups. Journal of Anthropologica"| __truncated__
+  .. ..$ Author  : chr "Wayne W. Zachary"
+  ..$ :List of 4
+  .. ..$ Faction: num [1:34] 1 1 1 1 1 1 1 1 2 2 ...
+  .. ..$ name   : chr [1:34] "Mr Hi" "Actor 2" "Actor 3" "Actor 4" ...
+  .. ..$ label  : chr [1:34] "H" "2" "3" "4" ...
+  .. ..$ color  : num [1:34] 1 1 1 1 1 1 1 1 2 2 ...
+  ..$ :List of 1
+  .. ..$ weight: num [1:78] 4 5 3 3 3 3 2 2 2 3 ...
+ $ :&lt;environment: 0x0000020c1141fa48&gt; </code></pre>
+</div>
+</div>
+</section>
+<section id="data-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
+<p>name: Identifier for each actor in the club</p>
+<p>label: Short label used for plotting</p>
+<p>Faction: Faction membership of the actor after the club split</p>
+<p>color: Visual for faction membership</p>
+<p>weight: Number of shared activities between two members</p>
+</section>
+<section id="converting-the-igraph-object-to-tidygraph-object" class="level2">
+<h2 class="anchored" data-anchor-id="converting-the-igraph-object-to-tidygraph-object">Converting the igraph object to tidygraph object</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">karate_tbl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tbl_graph</span>(karate) </span>
+<span id="cb7-2"></span>
+<span id="cb7-3">karate_tbl</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tbl_graph: 34 nodes and 78 edges
+#
+# An undirected simple graph with 1 component
+#
+# Node Data: 34 × 4 (active)
+   Faction name     label color
+     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;
+ 1       1 Mr Hi    H         1
+ 2       1 Actor 2  2         1
+ 3       1 Actor 3  3         1
+ 4       1 Actor 4  4         1
+ 5       1 Actor 5  5         1
+ 6       1 Actor 6  6         1
+ 7       1 Actor 7  7         1
+ 8       1 Actor 8  8         1
+ 9       2 Actor 9  9         2
+10       2 Actor 10 10        2
+# ℹ 24 more rows
+#
+# Edge Data: 78 × 3
+   from    to weight
+  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;
+1     1     2      4
+2     1     3      5
+3     1     4      3
+# ℹ 75 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="social-connections-within-the-members-of-the-famous-zachary-karate-club" class="level2">
+<h2 class="anchored" data-anchor-id="social-connections-within-the-members-of-the-famous-zachary-karate-club">Social Connections within the members of The Famous Zachary Karate Club</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">karate_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb9-2">  </span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">activate</span>(nodes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">degree =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centrality_degree</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb9-5">  </span>
+<span id="cb9-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fr"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Faction), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> degree), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> name), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repel =</span> T)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dark2"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-4/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>This network shows how the members of a university’s karate club are connected through the various shared activities. It shows clear club division (through colour) between two groups (Factions). Only a few people have connections across the faction who keep the club connected, the rest have connections only within their faction. Mr Hi and John A are at the centers of the two factions (leaders in their respective faction) and have the most connections , implying they have the most influence. Mr Hi and John A are both connected to each and everyone in their specific faction implying they are key figures and have the strongest influence in their respective factions.</p>
+</section>
+<section id="strength-of-social-connections-within-the-members-of-the-famous-zachary-karate-club" class="level2">
+<h2 class="anchored" data-anchor-id="strength-of-social-connections-within-the-members-of-the-famous-zachary-karate-club">Strength of social Connections within the members of The Famous Zachary Karate Club</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">karate_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb10-2">  </span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fr"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> weight, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> weight))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Faction)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> name), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repel =</span> T)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dark2"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-8">  </span>
+<span id="cb10-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.text  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb10-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>),</span>
+<span id="cb10-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.key.size =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>),</span>
+<span id="cb10-12">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `trans` argument of `continuous_scale()` is deprecated as of ggplot2 3.5.0.
+ℹ Please use the `transform` argument instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-4/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>The strongest connections (thick and lighter blue) are mostly present between people within the same faction, implying those people have more shared activities with people from their specific faction. Mr Hi and John A have the strongest connections within their factions, implying they have had a lot of interactions as they are leaders of the factions. Faction 2 (coloured in orange) show stronger connections withim them as compared to faction 1 (coloured in green), implying faction 2 had a tighter relationship aming the members.</p>
+</section>
+<section id="most-influential-people-within-the-members-of-the-famous-zachary-karate-club" class="level2">
+<h2 class="anchored" data-anchor-id="most-influential-people-within-the-members-of-the-famous-zachary-karate-club">Most Influential people within the members of The Famous Zachary Karate Club</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">karate_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb12-2">  </span>
+<span id="cb12-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">activate</span>(nodes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">degree =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centrality_degree</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb12-5">  </span>
+<span id="cb12-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"linear"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">circular =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> degree, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Faction)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> name), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repel =</span> T)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dark2"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-4/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>Mr Hi and John A are the most connected members and hold the most influence based on the web of connections they have. Most of the lines that connect to Mr Hi and John A are from members of their respective factions, suggesting strong dependence of the factions on their leaders. Actor 13 has a sole connection, only to his faction leader implying they have the weakest influence with the least number of connections. There are also a few other members who have only 2-3 connections (one of them being to the leader), also implying they have less influence.</p>
+</section>
+<section id="connections-within-the-famous-zachary-karate-club-that-it-depends-on" class="level2">
+<h2 class="anchored" data-anchor-id="connections-within-the-famous-zachary-karate-club-that-it-depends-on">Connections within The Famous Zachary Karate Club that it depends on</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">karate_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-2">  </span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">activate</span>(edges) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">between =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centrality_edge_betweenness</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-5">  </span>
+<span id="cb13-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"kk"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> between), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightblue"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Faction)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> name), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repel =</span> T)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dark2"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-4/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>Only a few connections are very important based on the betweeness between the members (shown by the thicker lines), suggesting that the members depend on these connections to stay connected. Most of the thick lines (showing strong betweeness) surround Mr Hi and John A as they are leaders and shows that most connections pass through them. Some members may not have connections with strong betweeness (thick lines) but removing them would very much affect the club. Like in the case of Actor 31, they do not have connections with particularly strong betweeness but removing them would affect the club as they connect a few members of the club who further connect to other members.</p>
+</section>
+<section id="leaders-of-the-factions-of-the-famous-zachary-karate-club" class="level2">
+<h2 class="anchored" data-anchor-id="leaders-of-the-factions-of-the-famous-zachary-karate-club">Leaders of the factions of The Famous Zachary Karate Club</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">karate <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb14-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggraph</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layout =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"focus"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">focus =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_edge_link0</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> weight), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightblue"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(Faction)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_node_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> name), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repel =</span> T)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dark2"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/A3-4/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comments</p>
+<p>Through this network visualisations, one can clearly see the Mr Hi and John A have the most important connections as they sit at the centre of their respective faction and the “focus” is on them. Removing either of them would largely affect the club as most of the connections largely depend on them. They also have some connections across the faction which acts as a strong link between them.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/A3-4/</guid>
+  <pubDate>Mon, 16 Feb 2026 12:37:39 GMT</pubDate>
 </item>
 </channel>
 </rss>
